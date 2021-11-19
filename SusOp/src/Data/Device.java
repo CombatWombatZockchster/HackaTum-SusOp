@@ -4,15 +4,17 @@ public class Device
 {
     public String name = "Device Name";
 
-    //Enum Type
+    public DeviceType type = DeviceType.OTHER;
+
     //short powerUsage
 
     //mac address (maybe hashed)
     //etc.
 
-    public Device(String name)
+    public Device(String name, DeviceType type)
     {
         this.name = name;
+        this.type = type;
     }
 
     @Override

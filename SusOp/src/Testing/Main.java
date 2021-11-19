@@ -1,11 +1,13 @@
 package Testing;
 
 import Data.Device;
+import Data.DeviceType;
 import UI.ListRenderer;
 import UI.Style;
 import UI.Window;
 
 import javax.swing.*;
+import java.util.Random;
 
 public class Main
 {
@@ -20,16 +22,19 @@ public class Main
 
         ListRenderer list = new ListRenderer();
 
-        window.setScreen(list);
 
 
         Device[] devices = new Device[10];
         for(int i = 0; i < 10; i++)
         {
-            devices[i] = new Device("Device " + (i+1));
+            String name = "Device " + (i+1);
+            DeviceType type = DeviceType.values()[new Random().nextInt(DeviceType.values().length)];
+            devices[i] = new Device(name, type);
+
             list.addElement(devices[i]);
         }
 
+        window.setScreen(list);
 
     }
 }

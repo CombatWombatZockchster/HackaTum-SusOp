@@ -9,7 +9,7 @@ public class Window
     private JFrame frame;
 
     private int width=1920, height=1080;
-    private int screenSizeFraction = 5;
+    private int screenSizeFraction = 2;
 
     private String title = "SusOp";
 
