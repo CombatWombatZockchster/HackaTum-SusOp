@@ -7,8 +7,10 @@ import UI.Window;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -43,7 +45,9 @@ public class Main {
         window.sideBar.settingsScreen = settingsScreen;
         window.sideBar.listScreen = listScreen;
 
+
         window.setScreen(listScreen);
+
 
         List<Device> devices = new LinkedList<Device>();
         NetworkPing.getAllDevices();

@@ -5,6 +5,8 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Random;
 
 public class HomeScreen extends JPanel
 {
@@ -16,6 +18,9 @@ public class HomeScreen extends JPanel
     JLabel totalWatt;
     JLabel avgWattHour;
     JLabel totalWattHour;
+
+    LineGraph lineGraph = new LineGraph();
+
 
     public HomeScreen()
     {
@@ -144,6 +149,20 @@ public class HomeScreen extends JPanel
         center.add(co2Label);
         center.add(avgCo2);
         center.add(totalCo2);
+
+        //Graph
+
+        //JPanel graphWrapper =
+
+        LineGraph lineGraph = new LineGraph();
+        HashMap<Integer, Integer> graphData = new HashMap<Integer, Integer>();
+        Random random = new Random();
+        for(int i = 0; i < 10; i++)
+        {
+            graphData.put(i, random.nextInt());
+        }
+        lineGraph.setData(graphData);
+
     }
 
     public void setStatistics(long avgWatt, long totalWatt, long avgWattHour, long totalWattHour, long avgCO2, long totalCO2)

@@ -150,11 +150,12 @@ public class SideBar extends JPanel
                 }
         );
 
-        add(emptySpace1);
-        add(homeButton);
 
         add(emptySpace2);
         add(listButton);
+
+        add(emptySpace1);
+        add(homeButton);
 
         //TODO: add this screen back, when it actually does something
         //add(emptySpace3);
