@@ -33,10 +33,10 @@ public class ListRenderer extends JPanel
         setOpaque(true);
 
 
-        setSize(new Dimension(Window.width/5, Window.height));
-        setMinimumSize(new Dimension(Window.width/4, Window.height/5));
-        setMaximumSize(new Dimension(Window.width, Window.height));
-        setPreferredSize(new Dimension(Window.width/3*2, Window.height));
+        //setSize(new Dimension(Window.width/5, Window.height));
+        //setMinimumSize(new Dimension(Window.width/4, Window.height/5));
+        //setMaximumSize(new Dimension(Window.width, Window.height));
+        //setPreferredSize(new Dimension(Window.width/3*2, Window.height));
 
         //Title
 
@@ -56,6 +56,50 @@ public class ListRenderer extends JPanel
 
         add(titleLabel, BorderLayout.PAGE_START);
 
+
+        JPanel content = new JPanel();
+        content.setBackground(Style.midgroundColor);
+        content.setLayout(new BorderLayout());
+
+        //Header
+        JPanel header = new JPanel();
+        header.setLayout(new GridLayout(1, 7));
+        header.setBackground(Style.midgroundColor);
+
+        JLabel typeHeader = new JLabel("Type");
+        JLabel nameHeader = new JLabel("Name");
+        JLabel ipHeader = new JLabel("IP");
+        JLabel timeHeader = new JLabel("Time");
+        JLabel wattageHeader = new JLabel("Wattage");
+        JLabel watthoursHeader = new JLabel("Watt Hours");
+        JLabel co2Header = new JLabel("CO2");
+
+        typeHeader.setForeground(Style.textColor);
+        nameHeader.setForeground(Style.textColor);
+        ipHeader.setForeground(Style.textColor);
+        timeHeader.setForeground(Style.textColor);
+        wattageHeader.setForeground(Style.textColor);
+        watthoursHeader.setForeground(Style.textColor);
+        co2Header.setForeground(Style.textColor);
+
+        typeHeader.setHorizontalAlignment(JLabel.CENTER);
+        nameHeader.setHorizontalAlignment(JLabel.CENTER);
+        ipHeader.setHorizontalAlignment(JLabel.CENTER);
+        timeHeader.setHorizontalAlignment(JLabel.CENTER);
+        wattageHeader.setHorizontalAlignment(JLabel.CENTER);
+        watthoursHeader.setHorizontalAlignment(JLabel.CENTER);
+        co2Header.setHorizontalAlignment(JLabel.CENTER);
+
+        header.add(typeHeader);
+        header.add(nameHeader);
+        header.add(typeHeader);
+        header.add(ipHeader);
+        header.add(timeHeader);
+        header.add(wattageHeader);
+        header.add(watthoursHeader);
+        header.add(co2Header);
+
+        content.add(header, BorderLayout.PAGE_START);
 
         //List
 
@@ -103,7 +147,9 @@ public class ListRenderer extends JPanel
             }
         });
 
-        add(scrollP, BorderLayout.CENTER);
+        content.add(scrollP, BorderLayout.CENTER);
+
+        add(content, BorderLayout.CENTER);
 
         /*
         Border border = getBorder();
