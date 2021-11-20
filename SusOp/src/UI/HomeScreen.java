@@ -19,7 +19,7 @@ public class HomeScreen extends JPanel
         //Title
         titleLabel = new JLabel();
 
-        titleLabel.setText("Your Device");
+        titleLabel.setText("Overview");
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         titleLabel.setBackground(Style.accentColor);

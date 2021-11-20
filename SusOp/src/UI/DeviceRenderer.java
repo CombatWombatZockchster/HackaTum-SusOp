@@ -97,6 +97,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
         {
             iconWrapper = new JLabel("");
             iconWrapper.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
+            iconWrapper.setHorizontalAlignment(JLabel.CENTER);
             add(iconWrapper);
 
             //add(emptySpace1);
@@ -105,6 +106,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
         if(name == null)
         {
             name = new JLabel("");
+            name.setHorizontalAlignment(JLabel.CENTER);
             add(name);
 
             //add(emptySpace2);
@@ -113,30 +115,35 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
         if(ip == null)
         {
             ip = new JLabel("");
+            ip.setHorizontalAlignment(JLabel.CENTER);
             add(ip);
         }
 
         if(time == null)
         {
             time = new JLabel("");
+            time.setHorizontalAlignment(JLabel.CENTER);
             add(time);
         }
 
         if(wattage == null)
         {
             wattage = new JLabel("");
+            wattage.setHorizontalAlignment(JLabel.CENTER);
             add(wattage);
         }
 
         if(wattHour == null)
         {
             wattHour = new JLabel("");
+            wattHour.setHorizontalAlignment(JLabel.CENTER);
             add(wattHour);
         }
 
         if(co2 == null)
         {
             co2 = new JLabel("");
+            co2.setHorizontalAlignment(JLabel.CENTER);
             add(co2);
         }
 
