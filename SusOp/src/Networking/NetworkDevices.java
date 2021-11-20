@@ -30,6 +30,10 @@ public class NetworkDevices {
         }
     }
 
+    public void removeOldDevices(){
+        
+    }
+
     public ArrayList<Device> getDevices(){
         return this.devices;
     }

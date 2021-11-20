@@ -11,7 +11,9 @@ public class Device
 
     public DeviceType type = DeviceType.OTHER;
 
-    public InetAddress address;
+    public InetAddress inetAddress;
+
+    public String address;
 
     private static String[] phones = new String[]{"HUAWEI", "SAMSUNG", "IPHONE", "APPLE", "PIXEL"};
 
@@ -22,11 +24,12 @@ public class Device
     //mac address (maybe hashed)
     //etc.
 
-    public Device(String name, DeviceType type, InetAddress address)
+    public Device(String name, DeviceType type, String address, InetAddress inetAddress)
     {
         this.name = name;
         this.type = type;
         this.address = address;
+        this.inetAddress = inetAddress;
         this.start = Instant.now();
         this.end = Instant.now();
     }
