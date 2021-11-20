@@ -43,13 +43,13 @@ public class SettingsScreen extends JPanel
         selection.setBackground(Style.midgroundColor);
 
         JLabel sourceTitle = new JLabel("Power Source:");
-        sourceTitle.setBackground(Style.accentColor);
-        sourceTitle.setForeground(Style.backgroundColor);
-        sourceTitle.setOpaque(true);
+        //sourceTitle.setBackground(Style.accentColor);
+        sourceTitle.setForeground(Style.textColor);
+        sourceTitle.setOpaque(false);
 
         selection.add(sourceTitle, BorderLayout.LINE_START);
 
-        Box.Filler emptySpace = new Box.Filler(new Dimension(8,8), new Dimension(72,72), new Dimension(128,128));
+        Box.Filler emptySpace = new Box.Filler(new Dimension(8,8), new Dimension(16,16), new Dimension(32,32));
         selection.add(emptySpace, BorderLayout.PAGE_START);
 
         String sources[] = {"Wind", "Gas", "Coal", "Nuclear", "Solar"};
@@ -61,6 +61,7 @@ public class SettingsScreen extends JPanel
 
         powerSelect.setBackground(Style.midgroundColor);
         powerSelect.setForeground(Style.textColor);
+        powerSelect.setBorder(null);
 
         selection.add(powerSelect, BorderLayout.CENTER);
 
