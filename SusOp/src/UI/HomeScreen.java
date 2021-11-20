@@ -57,7 +57,7 @@ public class HomeScreen extends JPanel
         add(emptySpaceRight, BorderLayout.LINE_END);
 
         JPanel background = new JPanel();
-        background.setBackground(Style.midgroundColor);
+        background.setBackground(Style.backgroundColor);
         //background.setLayout(new BorderLayout());
         background.setLayout(new BoxLayout(background, BoxLayout.PAGE_AXIS));
 
@@ -84,12 +84,12 @@ public class HomeScreen extends JPanel
         JLabel wattLabel = new JLabel("Wattage");
         JLabel wattHourLabel = new JLabel("Watt Hours");
 
-        statLabel.setForeground(Style.textColor);
-        avgLabel.setForeground(Style.textColor);
-        totalLabel.setForeground(Style.textColor);
-        co2Label.setForeground(Style.textColor);
-        wattLabel.setForeground(Style.textColor);
-        wattHourLabel.setForeground(Style.textColor);
+        statLabel.setForeground(Style.backgroundColor);
+        avgLabel.setForeground(Style.backgroundColor);
+        totalLabel.setForeground(Style.backgroundColor);
+        co2Label.setForeground(Style.backgroundColor);
+        wattLabel.setForeground(Style.backgroundColor);
+        wattHourLabel.setForeground(Style.backgroundColor);
 
         statLabel.setBackground(Style.accentColor);
         avgLabel.setBackground(Style.accentColor);
@@ -166,7 +166,7 @@ public class HomeScreen extends JPanel
 
         JPanel information = new JPanel();
         information.setBackground(Style.midgroundColor);
-        information.setLayout(new GridLayout(4, 2));
+        information.setLayout(new GridLayout(3, 2));
         //information.setPreferredSize(new Dimension(Window.width/4, Window.height/4));
 
         Box.Filler emptySpaceTop2 = new Box.Filler(new Dimension(8,8), new Dimension(16,16), new Dimension(32,32));
@@ -177,8 +177,8 @@ public class HomeScreen extends JPanel
         JLabel systemSpecs = new JLabel("System");
         JLabel empty = new JLabel("");
 
-        empty.setForeground(Style.textColor);
-        systemSpecs.setForeground(Style.textColor);
+        empty.setForeground(Style.backgroundColor);
+        systemSpecs.setForeground(Style.backgroundColor);
         systemSpecs.setBackground(Style.accentColor);
         empty.setBackground(Style.accentColor);
         systemSpecs.setOpaque(true);
@@ -196,7 +196,7 @@ public class HomeScreen extends JPanel
         JLabel userName = new JLabel("User:");
         JLabel name = new JLabel(System.getProperty("user.name"));
 
-        userName.setForeground(Style.textColor);
+        userName.setForeground(Style.backgroundColor);
         name.setForeground(Style.textColor);
         userName.setBackground(Style.accentColor);
         name.setBackground(Style.midgroundColor);
@@ -220,7 +220,7 @@ public class HomeScreen extends JPanel
             e.printStackTrace();
         }
 
-        ipAddress.setForeground(Style.textColor);
+        ipAddress.setForeground(Style.backgroundColor);
         address.setForeground(Style.textColor);
         ipAddress.setBackground(Style.accentColor);
         address.setBackground(Style.midgroundColor);
@@ -239,9 +239,26 @@ public class HomeScreen extends JPanel
 
         //Graph
 
-        //JPanel graphWrapper =
+        Box.Filler emptySpaceTop3 = new Box.Filler(new Dimension(8,8), new Dimension(16,16), new Dimension(32,32));
+        background.add(emptySpaceTop3);
+
+        JPanel graphWrapper = new JPanel();
+        graphWrapper.setLayout(new BorderLayout());
+
+        background.add(graphWrapper);
+
+        JLabel graphTitle = new JLabel("Cuncurrent Devices");
+        graphTitle.setForeground(Style.backgroundColor);
+        graphTitle.setHorizontalAlignment(JLabel.CENTER);
+        graphTitle.setBackground(Style.accentColor);
+        graphTitle.setOpaque(true);
+        graphTitle.setPreferredSize(new Dimension(getWidth(), 32));
+        graphWrapper.add(graphTitle, BorderLayout.PAGE_START);
 
         LineGraph lineGraph = new LineGraph();
+        graphWrapper.add(lineGraph, BorderLayout.CENTER);
+
+        //TODO: get real data
         HashMap<Integer, Integer> graphData = new HashMap<Integer, Integer>();
         Random random = new Random();
         for(int i = 0; i < 10; i++)
@@ -250,10 +267,9 @@ public class HomeScreen extends JPanel
         }
         lineGraph.setData(graphData);
 
-        Box.Filler emptySpaceTop3 = new Box.Filler(new Dimension(8,8), new Dimension(16,16), new Dimension(32,32));
-        background.add(emptySpaceTop3);
 
-        background.add(lineGraph, BorderLayout.PAGE_END);
+        Box.Filler emptySpaceTop4 = new Box.Filler(new Dimension(8,8), new Dimension(16,16), new Dimension(32,32));
+        background.add(emptySpaceTop4);
     }
 
     public void setStatistics(long avgWatt, long totalWatt, long avgWattHour, long totalWattHour, long avgCO2, long totalCO2)
