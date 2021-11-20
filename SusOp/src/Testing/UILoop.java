@@ -6,12 +6,12 @@ import UI.ListRenderer;
 
 import java.util.List;
 
-public class Loop extends Thread
+public class UILoop extends Thread
 {
     List<Device> devices;
     ListRenderer list;
 
-    public Loop(List<Device> devices, ListRenderer list)
+    public UILoop(List<Device> devices, ListRenderer list)
     {
         this.devices = devices;
         this.list = list;

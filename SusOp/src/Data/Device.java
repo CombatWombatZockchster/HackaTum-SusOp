@@ -31,7 +31,7 @@ public class Device
         this.address = address;
         this.inetAddress = inetAddress;
         this.start = Instant.now();
-        this.end = end;
+        this.end = Instant.now();
 
         switch(this.type){
             //https://qr.ae/pGm5QF
