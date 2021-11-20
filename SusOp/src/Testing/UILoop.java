@@ -27,14 +27,19 @@ public class UILoop extends Thread
         {
             List<Device> currentDevices = NetworkDevices.getInstance().getDevices();
 
+            List<Device> added = new LinkedList<Device>();
             for (Device d : currentDevices)
             {
                 if (!devices.contains(d))
                 {
-                    devices.add(d);
+                    added.add(d);
 
                     list.addElement(d);
                 }
+            }
+            for (Device d : added)
+            {
+                devices.add(d);
             }
 
             List<Device> removed = new LinkedList<Device>();
