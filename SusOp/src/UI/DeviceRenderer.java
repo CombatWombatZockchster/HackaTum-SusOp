@@ -15,6 +15,9 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
     JLabel name;
     JLabel ip;
     JLabel time;
+    JLabel wattage;
+    JLabel wattHour;
+    JLabel co2;
 
     /*
     Dimension minFiller = new Dimension(0, 0);
@@ -55,7 +58,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
 
         //BoxLayout layout = new BoxLayout(this, BoxLayout.LINE_AXIS);
         //setLayout(layout);
-        setLayout(new GridLayout(1, 4));
+        setLayout(new GridLayout(1, 7));
 
         String iconPath = "question.png";
         switch (value.type)
@@ -94,6 +97,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
         {
             iconWrapper = new JLabel("");
             iconWrapper.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
+            iconWrapper.setHorizontalAlignment(JLabel.CENTER);
             add(iconWrapper);
 
             //add(emptySpace1);
@@ -102,6 +106,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
         if(name == null)
         {
             name = new JLabel("");
+            name.setHorizontalAlignment(JLabel.CENTER);
             add(name);
 
             //add(emptySpace2);
@@ -110,13 +115,36 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
         if(ip == null)
         {
             ip = new JLabel("");
+            ip.setHorizontalAlignment(JLabel.CENTER);
             add(ip);
         }
 
         if(time == null)
         {
             time = new JLabel("");
+            time.setHorizontalAlignment(JLabel.CENTER);
             add(time);
+        }
+
+        if(wattage == null)
+        {
+            wattage = new JLabel("");
+            wattage.setHorizontalAlignment(JLabel.CENTER);
+            add(wattage);
+        }
+
+        if(wattHour == null)
+        {
+            wattHour = new JLabel("");
+            wattHour.setHorizontalAlignment(JLabel.CENTER);
+            add(wattHour);
+        }
+
+        if(co2 == null)
+        {
+            co2 = new JLabel("");
+            co2.setHorizontalAlignment(JLabel.CENTER);
+            add(co2);
         }
 
         iconWrapper.setIcon(icon);
@@ -127,6 +155,13 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
 
         time.setText(value.upTimeToString());
 
+        wattage.setText("" + value.getWattage() +" W");
+
+        Double wh = Device.getWattHour(value.getWattage(), value.getLifeTime());
+        wattHour.setText("" + Math.round(wh) + " Wh");
+
+        String c = "" + Math.round(Device.getCO2(wh)) + " g";
+        co2.setText(c);
 
         if(!isSelected && !cellHasFocus)
         {
@@ -136,6 +171,9 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
             ip.setForeground(Style.textColor);
             name.setForeground(Style.textColor);
             time.setForeground(Style.textColor);
+            wattage.setForeground(Style.textColor);
+            wattHour.setForeground(Style.textColor);
+            co2.setForeground(Style.textColor);
         }
         else if(isSelected)
         {
@@ -145,6 +183,9 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
             ip.setForeground(Style.backgroundColor);
             name.setForeground(Style.backgroundColor);
             time.setForeground(Style.backgroundColor);
+            wattage.setForeground(Style.backgroundColor);
+            wattHour.setForeground(Style.backgroundColor);
+            co2.setForeground(Style.backgroundColor);
         }
         /*
         else if(cellHasFocus)

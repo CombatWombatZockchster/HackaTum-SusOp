@@ -74,7 +74,7 @@ public class SideBar extends JPanel
         listButton.setBorderPainted(false);
         settingsButton.setBorderPainted(false);
 
-        ImageIcon homeIcon = ImageLoader.loadImage("home.png");
+        ImageIcon homeIcon = ImageLoader.loadImage("speedometer.png");
         ImageIcon listIcon = ImageLoader.loadImage("list.png");
         ImageIcon settingsIcon = ImageLoader.loadImage("gear.png");
 
@@ -156,7 +156,8 @@ public class SideBar extends JPanel
         add(emptySpace2);
         add(listButton);
 
-        add(emptySpace3);
-        add(settingsButton);
+        //TODO: add this screen back, when it actually does something
+        //add(emptySpace3);
+        //add(settingsButton);
     }
 }

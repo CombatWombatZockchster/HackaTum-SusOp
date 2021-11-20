@@ -58,8 +58,9 @@ public class Device
         return wattage * ((double) seconds / 3600);
     }
 
-    public static String getCO2(double wattHour){
-        return(wattHour * co2PerWattHour) + "gramms of CO2";
+
+    public static double getCO2(double wattHour){
+        return(wattHour * co2PerWattHour);
     }
 
     public Instant getEnd(){
@@ -72,6 +73,11 @@ public class Device
 
     public Duration getUpTime(){
         return Duration.between(start, end);
+    }
+
+    public long getLifeTime()
+    {
+        return  Duration.between(start, Instant.now()).toSeconds();
     }
 
     public String upTimeToString()
@@ -95,7 +101,7 @@ public class Device
         return "Name: " + this.name + " Type: " + this.type + " Address: " + this.address;
     }
 
-    private double getWattage() {
+    public double getWattage() {
         return this.wattage;
     }
 
