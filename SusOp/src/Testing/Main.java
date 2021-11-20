@@ -17,10 +17,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class Main
-{
-    public static void main(String[] args) throws IOException
-    {
+public class Main {
+    public static void main(String[] args) throws IOException {
         Window window = new Window();
         window.setIcon("logo.png");
 
@@ -50,34 +48,7 @@ public class Main
         List<Device> devices = new LinkedList<Device>();
         NetworkPing.getAllDevices();
 
-        new Thread(new Runnable()
-        {
-            public void run()
-            {
-                while (true)
-                {
-                    List<Device> currentDevices = NetworkDevices.getInstance().getDevices();
-
-                    for (Device d : currentDevices)
-                    {
-                        if (!devices.contains(d))
-                        {
-                            devices.add(d);
-
-                            list.addElement(d);
-                        }
-                    }
-
-                    try
-                    {
-                        this.wait((long) 5000);
-                    }
-                    catch (Exception e)
-                    {
-                        System.out.println("Crashed Ping Loop");
-                    }
-                }
-            }
-        }).start();
+        new Loop(devices, list).start();
     }
+
 }
