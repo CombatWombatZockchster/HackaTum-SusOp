@@ -64,8 +64,13 @@ public class ListRenderer extends JPanel
 
 
         JPanel content = new JPanel();
-        content.setBackground(Style.midgroundColor);
-        content.setLayout(new BorderLayout());
+        content.setOpaque(false);
+        content.setLayout(new BoxLayout(content, BoxLayout.PAGE_AXIS));
+
+        JLabel empty = new JLabel("");
+        empty.setOpaque(false);
+        empty.setPreferredSize(new Dimension(16, 16));
+        content.add(empty);
 
         //Header
         JPanel header = new JPanel();
@@ -105,7 +110,7 @@ public class ListRenderer extends JPanel
         header.add(watthoursHeader);
         header.add(co2Header);
 
-        content.add(header, BorderLayout.PAGE_START);
+        content.add(header);
 
         //List
 
@@ -153,7 +158,7 @@ public class ListRenderer extends JPanel
             }
         });
 
-        content.add(scrollP, BorderLayout.CENTER);
+        content.add(scrollP);
 
         add(content, BorderLayout.CENTER);
 
@@ -186,7 +191,7 @@ public class ListRenderer extends JPanel
         //devices.add(device);
         listModel.addElement(device);
 
-        //FIXME: list size needs to look somewhat sensible
+
         deviceJList.setPreferredSize(null);
         scrollP.setPreferredSize(null);
         setPreferredSize(null);
@@ -198,7 +203,7 @@ public class ListRenderer extends JPanel
     {
         listModel.removeElement(device);
 
-        //FIXME: list size needs to look somewhat sensible
+
         deviceJList.setPreferredSize(null);
         scrollP.setPreferredSize(null);
         setPreferredSize(null);
