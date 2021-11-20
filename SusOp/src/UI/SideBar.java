@@ -74,6 +74,10 @@ public class SideBar extends JPanel
         listButton.setBorderPainted(false);
         settingsButton.setBorderPainted(false);
 
+        homeButton.setFocusPainted(false);
+        listButton.setFocusPainted(false);
+        settingsButton.setFocusPainted(false);
+
         ImageIcon homeIcon = ImageLoader.loadImage("speedometer.png");
         ImageIcon listIcon = ImageLoader.loadImage("list.png");
         ImageIcon settingsIcon = ImageLoader.loadImage("gear.png");
