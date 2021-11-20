@@ -32,6 +32,57 @@ public class NetworkDevices {
         }
     }
 
+    //summe und durchschnitt von Wattage Watthour und Co2
+
+    public double getSumOfWatt(){
+        double sum = 0;
+        for(Device d: this.devices){
+            sum += d.getWattage();
+        }
+        return sum;
+    }
+
+    public double getSumOfWattHour(){
+        double sum = 0;
+        for(Device d: this.devices){
+            sum += Device.getWattHour(d.getWattage(), d.getLifeTime());
+        }
+        return sum;
+    }
+
+    public double getSumOfCo2(){
+        double sum = 0;
+        for(Device d: this.devices){
+            sum += Device.getCO2(Device.getWattHour(d.getWattage(), d.getLifeTime()));
+        }
+        return sum;
+    }
+
+    public double getAvgOfWatt(){
+        double sum = 0;
+        for(Device d: this.devices){
+            sum += d.getWattage();
+        }
+        return sum / devices.size();
+    }
+
+    public double getAvgOfWattHour(){
+        double sum = 0;
+        for(Device d: this.devices){
+            sum += Device.getWattHour(d.getWattage(), d.getLifeTime());
+        }
+        return sum / devices.size();
+    }
+
+    public double getAvgOfCo2(){
+        double sum = 0;
+        for(Device d: this.devices){
+            sum += Device.getCO2(Device.getWattHour(d.getWattage(), d.getLifeTime()));
+        }
+        return sum / devices.size();
+    }
+
+
     public void removeOldDevices(){
         for(int d = 0; d < devices.size(); d++){
             if(Duration.between(devices.get(d).getEnd().plus(Duration.ofSeconds(1)), Instant.now()).compareTo(Duration.ofMinutes(1)) > 0) {
