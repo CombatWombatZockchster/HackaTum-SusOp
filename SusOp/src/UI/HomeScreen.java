@@ -5,6 +5,8 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class HomeScreen extends JPanel
 {
@@ -144,6 +146,76 @@ public class HomeScreen extends JPanel
         center.add(co2Label);
         center.add(avgCo2);
         center.add(totalCo2);
+
+        //--- System Information ---
+
+        JPanel information = new JPanel();
+        information.setBackground(Style.midgroundColor);
+        information.setLayout(new GridLayout(4, 2));
+
+        //TODO HIER
+        background.add(information, BorderLayout.PAGE_START);
+
+        JLabel systemSpecs = new JLabel("System");
+        JLabel empty = new JLabel("");
+
+        empty.setForeground(Style.textColor);
+        systemSpecs.setForeground(Style.textColor);
+        systemSpecs.setBackground(Style.accentColor);
+        empty.setBackground(Style.accentColor);
+        systemSpecs.setOpaque(true);
+        empty.setOpaque(true);
+
+        systemSpecs.setPreferredSize(cellSize);
+        empty.setPreferredSize(cellSize);
+        systemSpecs.setHorizontalAlignment(JLabel.CENTER);
+        empty.setHorizontalAlignment(JLabel.CENTER);
+
+        information.add(systemSpecs);
+        information.add(empty);
+
+
+        JLabel userName = new JLabel("User:");
+        JLabel name = new JLabel(System.getProperty("user.name"));
+
+        userName.setForeground(Style.textColor);
+        name.setForeground(Style.textColor);
+        userName.setBackground(Style.accentColor);
+        name.setBackground(Style.midgroundColor);
+        userName.setOpaque(true);
+        name.setOpaque(true);
+
+        userName.setPreferredSize(cellSize);
+        name.setPreferredSize(cellSize);
+        userName.setHorizontalAlignment(JLabel.CENTER);
+        name.setHorizontalAlignment(JLabel.CENTER);
+
+        information.add(userName);
+        information.add(name);
+
+        JLabel ipAddress = new JLabel("IPv4:");
+        JLabel address = new JLabel("");
+        try {
+            InetAddress inetAddress = InetAddress.getLocalHost();
+            address = new JLabel(inetAddress.getHostAddress());
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+
+        ipAddress.setForeground(Style.textColor);
+        address.setForeground(Style.textColor);
+        ipAddress.setBackground(Style.accentColor);
+        address.setBackground(Style.midgroundColor);
+        ipAddress.setOpaque(true);
+        address.setOpaque(true);
+
+        ipAddress.setPreferredSize(cellSize);
+        address.setPreferredSize(cellSize);
+        ipAddress.setHorizontalAlignment(JLabel.CENTER);
+        address.setHorizontalAlignment(JLabel.CENTER);
+
+        information.add(ipAddress);
+        information.add(address);
     }
 
     public void setStatistics(long avgWatt, long totalWatt, long avgWattHour, long totalWattHour, long avgCO2, long totalCO2)
