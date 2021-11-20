@@ -53,13 +53,13 @@ public class Window
         frame.setVisible(true);
     }
 
-    /*
+
     //Lets try to properly wrap this
     public JFrame getFrame()
     {
         return frame;
     }
-    */
+
 
     public void setIcon(String path)
     {

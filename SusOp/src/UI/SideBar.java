@@ -112,7 +112,12 @@ public class SideBar extends JPanel
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        Window.getInstance().setScreen(homeScreen);
+
+                        Window window = Window.getInstance();
+                        window.setScreen(homeScreen);
+
+                        window.getFrame().repaint();
+                        window.getFrame().revalidate();
                     }
                 }
         );
@@ -121,7 +126,12 @@ public class SideBar extends JPanel
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        Window.getInstance().setScreen(listScreen);
+                        Window window = Window.getInstance();
+                        window.setScreen(listScreen);
+
+                        window.getFrame().repaint();
+                        window.getFrame().revalidate();
+
                     }
                 }
         );
@@ -130,7 +140,12 @@ public class SideBar extends JPanel
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        Window.getInstance().setScreen(settingsScreen);
+                        Window window = Window.getInstance();
+                        window.setScreen(settingsScreen);
+
+                        window.getFrame().repaint();
+                        window.getFrame().revalidate();
+
                     }
                 }
         );

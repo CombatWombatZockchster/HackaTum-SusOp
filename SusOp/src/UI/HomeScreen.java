@@ -15,6 +15,7 @@ public class HomeScreen extends JPanel
         setLayout(new BorderLayout());
         setBackground(Style.backgroundColor);
 
+
         titleLabel = new JLabel();
 
         titleLabel.setText("Your Device");
@@ -30,6 +31,7 @@ public class HomeScreen extends JPanel
         titleLabel.setBorder(margin);
 
         add(titleLabel, BorderLayout.PAGE_START);
+
 
     }
 }

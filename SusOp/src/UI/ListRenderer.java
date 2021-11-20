@@ -68,6 +68,7 @@ public class ListRenderer extends JPanel
         scrollP = new JScrollPane(deviceJList);
         scrollP.setBackground(Style.midgroundColor);
         scrollP.setBorder(null);
+        scrollP.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         //scrollP.setPreferredSize(null);
 
 

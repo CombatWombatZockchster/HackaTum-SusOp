@@ -9,6 +9,7 @@ import java.awt.*;
 public class SettingsScreen extends JPanel
 {
     JLabel titleLabel;
+    JComboBox powerSelect;
 
     public SettingsScreen()
     {
@@ -31,5 +32,33 @@ public class SettingsScreen extends JPanel
 
         add(titleLabel, BorderLayout.PAGE_START);
 
+
+        //Debug Values
+        JPanel selection = new JPanel();
+        selection.setBackground(Style.backgroundColor);
+
+        JLabel sourceTitle = new JLabel("Power Source:");
+        sourceTitle.setBackground(Style.accentColor);
+        sourceTitle.setForeground(Style.backgroundColor);
+        sourceTitle.setOpaque(true);
+
+        selection.add(sourceTitle, BorderLayout.LINE_START);
+
+        Box.Filler emptySpace = new Box.Filler(new Dimension(8,8), new Dimension(72,72), new Dimension(128,128));
+        selection.add(emptySpace, BorderLayout.PAGE_START);
+
+        String sources[] = {"Wind", "Gas", "Coal", "Nuclear", "Solar"};
+
+        powerSelect = new JComboBox(sources);
+
+        //powerSelect.setMaximumSize(new Dimension(Window.width/4, Window.height/4));
+        //powerSelect.setPreferredSize(new Dimension(Window.width/8, Window.height/8));
+
+        powerSelect.setBackground(Style.midgroundColor);
+        powerSelect.setForeground(Style.textColor);
+
+        selection.add(powerSelect, BorderLayout.CENTER);
+
+        add(selection, BorderLayout.CENTER);
     }
 }
