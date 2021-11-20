@@ -11,9 +11,9 @@ public class Device
 
     public DeviceType type = DeviceType.OTHER;
 
-    public InetAddress address;
+    public InetAddress inetAddress;
 
-    private static String[] phones = new String[]{"HUAWEI", "SAMSUNG", "IPHONE", "APPLE", "PIXEL"};
+    public String address;
 
     private Instant start, end;
 
@@ -22,13 +22,18 @@ public class Device
     //mac address (maybe hashed)
     //etc.
 
-    public Device(String name, DeviceType type, InetAddress address)
+    public Device(String name, DeviceType type, String address, InetAddress inetAddress)
     {
         this.name = name;
         this.type = type;
         this.address = address;
+        this.inetAddress = inetAddress;
         this.start = Instant.now();
-        this.end = Instant.now();
+        this.end = end;
+    }
+
+    public Instant getEnd(){
+        return end;
     }
 
     public void refreshTime(){
@@ -39,7 +44,10 @@ public class Device
         return Duration.between(start, end);
     }
 
-    public static String upTimeToString(Duration dur){
+    public String upTimeToString()
+    {
+        Duration dur = Duration.between(start, Instant.now());
+
         if(dur.toDays() != 0) {
             return dur.toDays() + " d";
         } else if(dur.toHours() != 0) {
@@ -57,19 +65,4 @@ public class Device
         return "Name: " + this.name + " Type: " + this.type + " Address: " + this.address;
     }
 
-    public static DeviceType findDeviceType(String info){
-        for (DeviceType t: DeviceType.values()) {
-            if(info.contains(t.name()) || info.contains(t.name().toLowerCase(Locale.ROOT))){
-                return t;
-            }
-        }
-
-        for(String t : phones){
-            if(info.contains(t)){
-                return DeviceType.PHONE;
-            }
-        }
-
-        return DeviceType.valueOf("OTHER");
-    }
 }

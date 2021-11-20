@@ -3,6 +3,8 @@ package Networking;
 import Data.Device;
 
 import java.lang.reflect.Array;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 
 public class NetworkDevices {
@@ -26,7 +28,15 @@ public class NetworkDevices {
         } else {
             System.out.println("Already got " + d.toString());
             this.devices.get(getIndexByAddress(this.devices, d.address.toString())).refreshTime();
-            System.out.println(Device.upTimeToString(this.devices.get(getIndexByAddress(this.devices, d.address.toString())).getUpTime()));
+            //System.out.println(Device.upTimeToString(this.devices.get(getIndexByAddress(this.devices, d.address.toString())).getUpTime()));
+        }
+    }
+
+    public void removeOldDevices(){
+        for(Device d: this.devices){
+            if(Duration.between( d.getEnd(),Instant.now()).compareTo(Duration.ofMinutes(1)) > 0) {
+                devices.remove(d);
+            }
         }
     }
 
