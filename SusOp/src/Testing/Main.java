@@ -31,7 +31,7 @@ public class Main {
         }
         */
 
-        JPanel homeScreen = new HomeScreen();
+        HomeScreen homeScreen = new HomeScreen();
 
         JPanel settingsScreen = new SettingsScreen();
 
@@ -48,7 +48,7 @@ public class Main {
         List<Device> devices = new LinkedList<Device>();
         NetworkPing.getAllDevices();
 
-        new UILoop(devices, list).start();
+        new UILoop(devices, list, homeScreen).start();
         new UtilityLoop().start();
     }
 }

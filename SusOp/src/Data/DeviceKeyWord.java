@@ -4,12 +4,12 @@ import java.util.Locale;
 
 public abstract class DeviceKeyWord
 {
-    public static String[] phones = new String[]{"HUAWEI", "SAMSUNG", "IPHONE","APPLE", "PIXEL", "XIAOMI", "REDMI", "Android", "GAlAXY"};
+    public static String[] phones = new String[]{"HUAWEI", "SAMSUNG", "IPHONE","APPLE", "PIXEL", "XIAOMI", "REDMI", "Android", "GAlAXY", "M2101K7BNY"};
     public static String[] mobile = new String[]{"iPad", "tablet", "kindle"};
     public static String[] routers = new String[]{"fritzbox", "fritz.box", "Fritz!Box", "Telekom"};
     public static String[] desktop = new String[]{"DESKTOP", "PC", "ubuntu", "mac"};
     public static String[] laptop = new String[]{"LAPTOP", "notebook", "ultrabook", "macbook"};
-    public static String[] printer = new String[]{"printer", "Inkjet", "Canon", "copy"};
+    public static String[] printer = new String[]{"printer", "Inkjet", "Canon", "copy", "ESP-A416ED"};
     public static String[] bulbs = new String[]{"lamp", "bulb", "hue"};
 
     public static boolean checkForKeyWord(String name, String[] keywords)
