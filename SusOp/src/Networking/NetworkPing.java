@@ -9,11 +9,49 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.UnknownHostException;
+import java.util.concurrent.TimeUnit;
 
 public class NetworkPing
 {
     public static void main(String[] args) throws IOException
     {
+        for(Device d: NetworkDevices.getInstance().getDevices()){
+            System.out.println(d.toString());
+        }
+        try{
+            getAllDevices();
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+
+        try {
+            TimeUnit.SECONDS.sleep(20);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("----");
+
+        for(Device d: NetworkDevices.getInstance().getDevices()){
+            System.out.println(d.toString());
+        }
+        try{
+            getAllDevices();
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+
+        try {
+            TimeUnit.SECONDS.sleep(41);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("----");
+
+        for(Device d: NetworkDevices.getInstance().getDevices()){
+            System.out.println(d.toString());
+        }
         try{
             getAllDevices();
         }catch(Exception e){
@@ -42,7 +80,6 @@ public class NetworkPing
                             }
                             Device d = new Device(name, Device.findDeviceType(type), address);
                             NetworkDevices.getInstance().addDevice(d);
-                            System.out.println(d);
                             //Mac doesnt work outside of our Broadcast
                             //NetworkInterface ni = NetworkInterface.getByInetAddress(address);
                         } else if (!address.getHostAddress().equals(address.getHostName())) {
