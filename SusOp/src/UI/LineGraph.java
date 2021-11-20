@@ -14,7 +14,7 @@ public class LineGraph extends JPanel
 
     public LineGraph()
     {
-        setBackground(Style.backgroundColor);
+        setBackground(Style.midgroundColor);
     }
 
     public void setData(HashMap data)
@@ -29,7 +29,12 @@ public class LineGraph extends JPanel
         Graphics2D g2D = (Graphics2D) g;
 
         double xMul = (double) getWidth() / (double) data.size();
-        double yMul = (double) getHeight() / (double) (data.values().stream().max(Comparator.<Integer>naturalOrder()).get());
+        double yMul = (double) getHeight() / (double)
+                Math.abs
+                (
+                        data.values().stream().max(Comparator.<Integer>naturalOrder()).get()
+                        -  data.values().stream().min(Comparator.<Integer>naturalOrder()).get()
+                );
 
         List<Point> points = new ArrayList<Point>();
 
@@ -42,6 +47,7 @@ public class LineGraph extends JPanel
         }
 
         g2D.setColor(Style.highLightColor);
+        g2D.setStroke(new BasicStroke(2f));
         for(int i = 0; i < points.size()-1; i++)
         {
             Point a = points.get(i);
