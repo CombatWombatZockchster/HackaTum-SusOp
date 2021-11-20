@@ -62,7 +62,7 @@ public class Main
                         InetAddress address = InetAddress.getByAddress(ip);
                         if (address.isReachable(1000))
                         {
-                            Device device = new Device(address.toString(), DeviceType.DESKTOP);
+                            Device device = new Device(" Test Name", DeviceType.DESKTOP, address);
                             list.addElement(device);
                         }
                     }

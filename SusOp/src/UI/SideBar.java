@@ -12,11 +12,11 @@ public class SideBar extends JPanel
     {
         setBackground(Style.midgroundColor);
 
-        setSize(new Dimension(Window.width/8, Window.height));
+        setSize(new Dimension(Window.width/10, Window.height));
         setMinimumSize(new Dimension(Window.width/20, Window.height/3));
-        setPreferredSize(new Dimension(Window.width/10, Window.height));
+        setPreferredSize(new Dimension(Window.width/15, Window.height));
 
-        Dimension minFiller = new Dimension(8, 8);
+        Dimension minFiller = new Dimension(0, 0);
         Dimension prefFiller = new Dimension(32, 32);
         Dimension maxFiller = new Dimension(64, 64);
 
@@ -27,11 +27,11 @@ public class SideBar extends JPanel
 
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
-        ImageIcon mainIcon = ImageLoader.loadImage("logo.png").get();
+        ImageIcon mainIcon = ImageLoader.loadImage("logoClear.png").get();
         if(mainIcon != null)
         {
             //Rescale
-            mainIcon = ImageLoader.resizeIcon(mainIcon, 64, 64);
+            mainIcon = ImageLoader.resizeIcon(mainIcon, 72, 72);
 
             JLabel iconWrapper = new JLabel("");
             iconWrapper.setAlignmentX(JLabel.CENTER_ALIGNMENT);
@@ -97,7 +97,7 @@ public class SideBar extends JPanel
         homeButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
         listButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
         graphButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
-        
+
 
         add(emptySpace1);
         add(homeButton);
