@@ -40,6 +40,7 @@ public class Window
         height = screenSize.height;
         Dimension minScreenSize = new Dimension(width/screenSizeFraction, height/screenSizeFraction);
         frame.setMinimumSize(minScreenSize);
+        frame.setPreferredSize(screenSize);
 
 
         //Style

@@ -16,9 +16,9 @@ public class SideBar extends JPanel
     {
         setBackground(Style.midgroundColor);
 
-        setSize(new Dimension(Window.width/10, Window.height));
-        setMinimumSize(new Dimension(Window.width/20, Window.height/3));
-        setPreferredSize(new Dimension(Window.width/15, Window.height));
+        //setSize(new Dimension(Window.width/10, Window.height));
+        //setMinimumSize(new Dimension(Window.width/20, Window.height/3));
+        //setPreferredSize(new Dimension(Window.width/15, Window.height));
 
         Dimension minFiller = new Dimension(0, 0);
         Dimension prefFiller = new Dimension(32, 32);

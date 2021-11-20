@@ -21,8 +21,13 @@ public class Device
     private double wattage;
 
     //https://www.umweltbundesamt.de/themen/klima-energie/energieversorgung/strom-waermeversorgung-in-zahlen?sprungmarke=Strommix#Strommix
+<<<<<<< Updated upstream
     // Germany 2020 - 366 Grams per Watt hour
     private static int co2PerWattHour = 366;
+=======
+    // Germany 2020 - 366 Grams per kilo Watt hour
+    private static double co2PerWattHour = 366.0 / 1000.0;
+>>>>>>> Stashed changes
 
     public Device(String name, DeviceType type, String address, InetAddress inetAddress)
     {
