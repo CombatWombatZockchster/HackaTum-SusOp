@@ -3,6 +3,8 @@ package Networking;
 import Data.Device;
 
 import java.lang.reflect.Array;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 
 public class NetworkDevices {
@@ -31,7 +33,11 @@ public class NetworkDevices {
     }
 
     public void removeOldDevices(){
-        
+        for(Device d: this.devices){
+            if(Duration.between( d.getEnd(),Instant.now()).compareTo(Duration.ofMinutes(1)) > 0) {
+                devices.remove(d);
+            }
+        }
     }
 
     public ArrayList<Device> getDevices(){

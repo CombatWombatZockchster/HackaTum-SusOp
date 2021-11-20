@@ -40,6 +40,10 @@ public class Device
         this.end = Instant.now();
     }
 
+    public Instant getEnd(){
+        return this.end;
+    }
+
     public void refreshTime(){
         this.end = Instant.now();
     }
