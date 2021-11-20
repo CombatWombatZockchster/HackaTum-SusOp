@@ -39,7 +39,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
         }
 
         ImageIcon icon = ImageLoader.loadImage(iconPath).get();
-        icon = new ImageIcon(icon.getImage().getScaledInstance(64,64, Image.SCALE_SMOOTH));
+        icon = ImageLoader.resizeIcon(icon, 64, 64);
 
         if(icon != null)
             setIcon(icon);
@@ -55,8 +55,8 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
         }
         else if(isSelected)
         {
-            setBackground(Style.accentColor);
-            setForeground(Style.highLightColor);
+            setBackground(Style.highLightColor);
+            setForeground(Style.backgroundColor);
         }
         /*
         else if(cellHasFocus)

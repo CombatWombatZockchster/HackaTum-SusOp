@@ -20,16 +20,57 @@ public class ListRenderer extends JPanel
     JList<Device> deviceJList;
     JScrollPane scrollP;
 
+    String title = "Devices";
+    JLabel titleLabel;
+
     public ListRenderer()
     {
+        //setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        setLayout(new BorderLayout());
+
+        setBackground(Style.backgroundColor);
+        setBorder(null);
+        setOpaque(true);
+
+
+        setSize(new Dimension(Window.width/5, Window.height));
+        setMinimumSize(new Dimension(Window.width/4, Window.height/5));
+        setPreferredSize(new Dimension(Window.width/2, Window.height));
+
+        //Title
+
+        titleLabel = new JLabel();
+
+        titleLabel.setText(title);
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        titleLabel.setBackground(Style.accentColor);
+        titleLabel.setForeground(Style.backgroundColor);
+        titleLabel.setOpaque(true);
+
+        Border border = titleLabel.getBorder();
+        Border offset = new EmptyBorder(16, 64, 16, 64);
+        CompoundBorder margin = new CompoundBorder(border, offset);
+        titleLabel.setBorder(margin);
+
+        add(titleLabel, BorderLayout.PAGE_START);
+
+
+        //List
+
         deviceJList = new JList<>(listModel);
         deviceJList.setCellRenderer(new DeviceRenderer());
 
-        setBackground(Style.backgroundColor);
+        deviceJList.setBackground(Style.backgroundColor);
+        deviceJList.setBorder(null);
 
         scrollP = new JScrollPane(deviceJList);
         scrollP.setBackground(Style.midgroundColor);
+        scrollP.setBorder(null);
+        //scrollP.setPreferredSize(null);
 
+
+        //Make it Scrollable
         JScrollBar scrollBar = scrollP.getVerticalScrollBar();
         scrollBar.setBackground(Style.midgroundColor);
         scrollBar.setForeground(Style.accentColor);
@@ -60,7 +101,7 @@ public class ListRenderer extends JPanel
             }
         });
 
-        add(scrollP);
+        add(scrollP, BorderLayout.CENTER);
 
         /*
         Border border = getBorder();
@@ -76,6 +117,13 @@ public class ListRenderer extends JPanel
     {
         //devices.add(device);
         listModel.addElement(device);
+
+        //FIXME: list size needs to look somewhat sensible
+        deviceJList.setPreferredSize(null);
+        scrollP.setPreferredSize(null);
+        setPreferredSize(null);
+
+        setMinimumSize(new Dimension(16, Window.height));
     }
 
     public void removeElement(Device device)
