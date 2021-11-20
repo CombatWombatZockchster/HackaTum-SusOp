@@ -5,7 +5,7 @@
 <div align="center">
 <p align="center">
 <a href="https://github.com/CombatWombatZockchster/HackaTum-SusOp">
-<img src="https://raw.githubusercontent.com/CombatWombatZockchster/HackaTum-SusOp/main/SusOp/resources/Logo_Wide%400.7x.png" alt="Logo" width="120" height="120">
+<img src="https://raw.githubusercontent.com/CombatWombatZockchster/HackaTum-SusOp/main/SusOp/resources/Logo_Wide%400.7x.png" alt="Logo">
 
 <h3 align="center"> Susop | HackaTUM 2021 </h3>
 </a>
