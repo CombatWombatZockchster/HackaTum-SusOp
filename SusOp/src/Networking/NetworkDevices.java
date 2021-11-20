@@ -91,7 +91,7 @@ public class NetworkDevices {
 
     public void removeOldDevices(){
         for(int d = 0; d < devices.size(); d++){
-            if(Duration.between(devices.get(d).getEnd().plus(Duration.ofSeconds(1)), Instant.now()).compareTo(Duration.ofMinutes(1)) > 0) {
+            if(Duration.between(devices.get(d).getEnd().plus(Duration.ofSeconds(1)), Instant.now()).compareTo(Duration.ofSeconds(30)) > 0) {
                 System.out.println(devices.get(d).toString());
                 devices.remove(d);
             }

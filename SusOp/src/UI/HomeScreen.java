@@ -1,5 +1,7 @@
 package UI;
 
+import Networking.NetworkDevices;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
@@ -184,6 +186,7 @@ public class HomeScreen extends JPanel
         systemSpecs.setOpaque(true);
         empty.setOpaque(true);
 
+
         systemSpecs.setPreferredSize(cellSize);
         empty.setPreferredSize(cellSize);
         systemSpecs.setHorizontalAlignment(JLabel.CENTER);
@@ -192,6 +195,10 @@ public class HomeScreen extends JPanel
         information.add(systemSpecs);
         information.add(empty);
 
+        JLabel empty2 = new JLabel("");
+        empty2.setBackground(Style.accentColor);
+        empty2.setOpaque(true);
+        information.add(empty2);
 
         JLabel userName = new JLabel("User:");
         JLabel name = new JLabel(System.getProperty("user.name"));
@@ -206,9 +213,14 @@ public class HomeScreen extends JPanel
         userName.setPreferredSize(cellSize);
         name.setPreferredSize(cellSize);
         userName.setHorizontalAlignment(JLabel.CENTER);
-        name.setHorizontalAlignment(JLabel.CENTER);
+        name.setHorizontalAlignment(JLabel.LEFT);
 
         information.add(userName);
+
+        JLabel empty3 = new JLabel("");
+        empty3.setBackground(Style.midgroundColor);
+        information.add(empty3);
+
         information.add(name);
 
         JLabel ipAddress = new JLabel("IPv4:");
@@ -231,8 +243,14 @@ public class HomeScreen extends JPanel
         address.setPreferredSize(cellSize);
         ipAddress.setHorizontalAlignment(JLabel.CENTER);
         address.setHorizontalAlignment(JLabel.CENTER);
+        address.setHorizontalAlignment(JLabel.LEFT);
 
         information.add(ipAddress);
+
+        JLabel empty4 = new JLabel("");
+        empty4.setBackground(Style.midgroundColor);
+        information.add(empty4);
+
         information.add(address);
 
 
@@ -258,19 +276,27 @@ public class HomeScreen extends JPanel
         LineGraph lineGraph = new LineGraph();
         graphWrapper.add(lineGraph, BorderLayout.CENTER);
 
-        //TODO: get real data
+
+
+        //Dummy Data
+        /*
         HashMap<Integer, Integer> graphData = new HashMap<Integer, Integer>();
         Random random = new Random();
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 100; i++)
         {
-            graphData.put(i, random.nextInt());
+            //graphData.put(i, random.nextInt());
+            graphData.put(i, i % 10 + random.nextInt(10));
         }
+        */
+        HashMap<Integer, Integer> graphData = NetworkDevices.getInstance().getGraphData();
+        graphData.put(0, 0);
         lineGraph.setData(graphData);
 
 
         Box.Filler emptySpaceTop4 = new Box.Filler(new Dimension(8,8), new Dimension(16,16), new Dimension(32,32));
         background.add(emptySpaceTop4);
     }
+
 
     public void setStatistics(long avgWatt, long totalWatt, long avgWattHour, long totalWattHour, long avgCO2, long totalCO2)
     {
@@ -280,5 +306,9 @@ public class HomeScreen extends JPanel
         this.totalWattHour.setText("" + avgWatt + " Wh");
         this.avgCo2.setText("" + avgCO2 + " g");
         this.totalCo2.setText("" + totalCO2 + " g");
+
+        HashMap<Integer, Integer> graphData = NetworkDevices.getInstance().getGraphData();
+        graphData.put(0, 0);
+        lineGraph.setData(graphData);
     }
 }

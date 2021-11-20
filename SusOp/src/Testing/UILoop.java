@@ -5,6 +5,7 @@ import Networking.NetworkDevices;
 import UI.HomeScreen;
 import UI.ListRenderer;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class UILoop extends Thread
@@ -36,14 +37,21 @@ public class UILoop extends Thread
                 }
             }
 
+            List<Device> removed = new LinkedList<Device>();
             for (Device d : devices)
             {
                 if (!currentDevices.contains(d))
                 {
-                    devices.remove(d);
+                    //devices.remove(d);
+                    removed.add(d);
 
                     list.removeElement(d);
                 }
+            }
+
+            for(Device d : removed)
+            {
+                devices.remove(d);
             }
 
             try

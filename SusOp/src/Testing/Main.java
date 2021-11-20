@@ -12,10 +12,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class Main {
-    public static void main(String[] args) throws IOException {
+public class Main
+{
+    public static void main(String[] args) throws IOException
+    {
         Window window = new Window();
-        window.setIcon("logo.png");
+        window.setIcon("logoRound.png");
 
 
         ListRenderer list = new ListRenderer();
@@ -37,9 +39,7 @@ public class Main {
 
         JPanel settingsScreen = new SettingsScreen();
 
-        JPanel listScreen = list;//new JPanel();
-        //listScreen.add(list, BorderLayout.LINE_START);
-        //listScreen.setBackground(Style.backgroundColor);
+        JPanel listScreen = list;
 
         window.sideBar.homeScreen = homeScreen;
         window.sideBar.settingsScreen = settingsScreen;
