@@ -28,7 +28,7 @@ public class NetworkDevices {
         } else {
             System.out.println("Already got " + d.toString());
             this.devices.get(getIndexByAddress(this.devices, d.address.toString())).refreshTime();
-            System.out.println(Device.upTimeToString(this.devices.get(getIndexByAddress(this.devices, d.address.toString())).getUpTime()));
+            //System.out.println(Device.upTimeToString(this.devices.get(getIndexByAddress(this.devices, d.address.toString())).getUpTime()));
         }
     }
 

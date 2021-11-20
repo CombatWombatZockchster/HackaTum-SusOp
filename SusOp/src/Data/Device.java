@@ -29,11 +29,11 @@ public class Device
         this.address = address;
         this.inetAddress = inetAddress;
         this.start = Instant.now();
-        this.end = Instant.now();
+        this.end = end;
     }
 
     public Instant getEnd(){
-        return this.end;
+        return end;
     }
 
     public void refreshTime(){
@@ -44,7 +44,10 @@ public class Device
         return Duration.between(start, end);
     }
 
-    public static String upTimeToString(Duration dur){
+    public String upTimeToString()
+    {
+        Duration dur = Duration.between(start, Instant.now());
+
         if(dur.toDays() != 0) {
             return dur.toDays() + " d";
         } else if(dur.toHours() != 0) {

@@ -50,5 +50,4 @@ public class Main {
 
         new Loop(devices, list).start();
     }
-
 }

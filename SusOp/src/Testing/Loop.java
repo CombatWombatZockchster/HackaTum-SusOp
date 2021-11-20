@@ -35,12 +35,15 @@ public class Loop extends Thread
 
             try
             {
-                sleep(5000);
+                sleep(1000);
             }
             catch (Exception e)
             {
                 System.out.println("Crashed Ping Loop");
             }
+
+            list.repaint();
+            list.revalidate();
         }
     }
 }

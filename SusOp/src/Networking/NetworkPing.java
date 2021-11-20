@@ -73,18 +73,22 @@ public class NetworkPing
                         InetAddress address = InetAddress.getByAddress(ip);
                         if (address.isReachable(1000)) {
                             String name = address.getHostName();
-                            String type = name;
-                            if(address.getHostAddress().contains(name)){
-                                //Device does not want to show its name <.<
-                                name = "Unkown Device";
-                                type = "OTHER";
-                            }
 
                             //remove possible ".fritz.box" from name, cause sometimes is just gets added
                             String unwantedSuffix = ".fritz.box";//Note the leading dot
                             int suffixIndex = name.lastIndexOf(unwantedSuffix);
                             if(suffixIndex > 0)
+                            {
                                 name = name.substring(0, suffixIndex);
+                            }
+
+                            String type = name;
+
+                            if(address.getHostAddress().contains(name)){
+                                //Device does not want to show its name <.<
+                                name = "Unkown Device";
+                                type = "OTHER";
+                            }
 
                             Device d = new Device(name, DeviceKeyWord.findDeviceType(type), address.getHostAddress(), address);
                             NetworkDevices.getInstance().addDevice(d);
