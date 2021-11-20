@@ -76,7 +76,7 @@ public class Window
 
         currentScreen = content;
         frame.add(content, BorderLayout.CENTER);
-        frame.pack();
+        //frame.pack();
     }
 
     public static Window getInstance()
