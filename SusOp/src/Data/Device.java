@@ -73,12 +73,27 @@ public class Device
             }
         }
 
-        for(String t : phones){
-            if(info.contains(t)){
-                return DeviceType.PHONE;
-            }
-        }
+        if(checkForKeyWord(info, phones)) return DeviceType.PHONE;
+        if(checkForKeyWord(info, mobile)) return DeviceType.MOBILE;
+        if(checkForKeyWord(info, routers)) return DeviceType.ROUTER;
+        if(checkForKeyWord(info, desktop)) return DeviceType.DESKTOP;
+        if(checkForKeyWord(info, laptop)) return DeviceType.LAPTOP;
+        if(checkForKeyWord(info, printer)) return DeviceType.PRINTER;
+        if(checkForKeyWord(info, bulbs)) return DeviceType.LIGHTBULB;
+
 
         return DeviceType.valueOf("OTHER");
+    }
+
+    private static boolean checkForKeyWord(String name, String[] keywords)
+    {
+        for(String t : keywords)
+        {
+            if(name.contains(t) || name.contains(t.toLowerCase()) || name.contains(t.toUpperCase()))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

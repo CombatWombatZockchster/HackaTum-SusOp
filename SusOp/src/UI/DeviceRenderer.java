@@ -117,7 +117,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
 
         name.setText(value.name);
 
-        ip.setText(value.address.toString());
+        ip.setText(value.address);
 
 
         if(!isSelected && !cellHasFocus)
