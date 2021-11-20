@@ -58,7 +58,8 @@ public class HomeScreen extends JPanel
 
         JPanel background = new JPanel();
         background.setBackground(Style.midgroundColor);
-        background.setLayout(new FlowLayout());
+        //background.setLayout(new BorderLayout());
+        background.setLayout(new BoxLayout(background, BoxLayout.PAGE_AXIS));
 
         add(background, BorderLayout.CENTER);
 
@@ -66,6 +67,10 @@ public class HomeScreen extends JPanel
         //Table
         JPanel center = new JPanel();
         center.setBackground(Style.midgroundColor);
+        //center.setPreferredSize(new Dimension(Window.width/2, Window.height/3));
+
+        Box.Filler emptySpaceTop = new Box.Filler(new Dimension(8,8), new Dimension(16,16), new Dimension(32,32));
+        background.add(emptySpaceTop);
 
         background.add(center);
 
@@ -162,9 +167,12 @@ public class HomeScreen extends JPanel
         JPanel information = new JPanel();
         information.setBackground(Style.midgroundColor);
         information.setLayout(new GridLayout(4, 2));
+        //information.setPreferredSize(new Dimension(Window.width/4, Window.height/4));
 
-        //TODO HIER
-        background.add(information, BorderLayout.PAGE_START);
+        Box.Filler emptySpaceTop2 = new Box.Filler(new Dimension(8,8), new Dimension(16,16), new Dimension(32,32));
+        background.add(emptySpaceTop2);
+
+        background.add(information, BorderLayout.CENTER);
 
         JLabel systemSpecs = new JLabel("System");
         JLabel empty = new JLabel("");
@@ -241,6 +249,11 @@ public class HomeScreen extends JPanel
             graphData.put(i, random.nextInt());
         }
         lineGraph.setData(graphData);
+
+        Box.Filler emptySpaceTop3 = new Box.Filler(new Dimension(8,8), new Dimension(16,16), new Dimension(32,32));
+        background.add(emptySpaceTop3);
+
+        background.add(lineGraph, BorderLayout.PAGE_END);
     }
 
     public void setStatistics(long avgWatt, long totalWatt, long avgWattHour, long totalWattHour, long avgCO2, long totalCO2)
