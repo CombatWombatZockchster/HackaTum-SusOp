@@ -35,9 +35,10 @@ public class UtilityLoop extends Thread
             {
                 System.out.println("Crashed Ping Loop");
             }
-
+            
             //Remove old Devices that have been inactive for 60 seconds at least from List
             this.instance.removeOldDevices();
+            this.instance.addGraphDataPoint();
 
             try
             {

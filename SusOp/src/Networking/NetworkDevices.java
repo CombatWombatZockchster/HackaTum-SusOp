@@ -6,6 +6,7 @@ import java.lang.reflect.Array;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class NetworkDevices {
 
@@ -13,8 +14,13 @@ public class NetworkDevices {
 
     private ArrayList<Device> devices;
 
+    private HashMap<Integer, Integer> graphData;
+    private Instant startUp;
+
     public NetworkDevices(){
         this.devices = new ArrayList<Device>();
+        this.graphData = new HashMap<Integer, Integer>();
+        startUp = Instant.now();
     }
 
     public static NetworkDevices getInstance(){
@@ -90,6 +96,14 @@ public class NetworkDevices {
                 devices.remove(d);
             }
         }
+    }
+
+    public void addGraphDataPoint(){
+        this.graphData.put((int) Duration.between(startUp, Instant.now()).toSeconds(), this.devices.size());
+    }
+
+    public HashMap<Integer, Integer> getGraphData(){
+        return this.graphData;
     }
 
     public ArrayList<Device> getDevices(){
