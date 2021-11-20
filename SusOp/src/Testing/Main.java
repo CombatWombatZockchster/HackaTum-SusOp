@@ -4,8 +4,7 @@ import Data.Device;
 import Data.DeviceType;
 import Networking.NetworkDevices;
 import Networking.NetworkPing;
-import UI.ListRenderer;
-import UI.Style;
+import UI.*;
 import UI.Window;
 
 import javax.swing.*;
@@ -38,18 +37,14 @@ public class Main {
         }
         */
 
-        JPanel homeScreen = new JPanel();
-        homeScreen.setBackground(Style.backgroundColor);
-        homeScreen.add(new JLabel("Home Screen"));
+        JPanel homeScreen = new HomeScreen();
 
-        JPanel settingsScreen = new JPanel();
-        settingsScreen.setBackground(Style.backgroundColor);
-        settingsScreen.add(new JLabel("Settings Screen"));
+        JPanel settingsScreen = new SettingsScreen();
 
-        JPanel listScreen = new JPanel();
-        listScreen.add(list, BorderLayout.LINE_START);
-        listScreen.setBackground(Style.backgroundColor);
-        
+        JPanel listScreen = list;//new JPanel();
+        //listScreen.add(list, BorderLayout.LINE_START);
+        //listScreen.setBackground(Style.backgroundColor);
+
         window.sideBar.homeScreen = homeScreen;
         window.sideBar.settingsScreen = settingsScreen;
         window.sideBar.listScreen = listScreen;
