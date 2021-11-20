@@ -55,15 +55,20 @@ public class SideBar extends JPanel
         homeButton.setOpaque(false);
         listButton.setOpaque(false);
         graphButton.setOpaque(false);
-
+        /*
         homeButton.setForeground(Style.backgroundColor);
         listButton.setForeground(Style.backgroundColor);
         graphButton.setForeground(Style.backgroundColor);
-
+        */
+        UIManager.put("Button.select", Style.highLightColor);
 
         homeButton.setBorder(null);
         listButton.setBorder(null);
         graphButton.setBorder(null);
+
+        homeButton.setBorderPainted(false);
+        listButton.setBorderPainted(false);
+        graphButton.setBorderPainted(false);
 
         ImageIcon homeIcon = ImageLoader.loadImage("home.png").get();
         ImageIcon listIcon = ImageLoader.loadImage("list.png").get();
