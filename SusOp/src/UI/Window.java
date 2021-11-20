@@ -10,17 +10,23 @@ import java.net.URL;
 public class Window
 {
     private JFrame frame;
+    public  SideBar sideBar;
+
+    private Container currentScreen = null;
 
     public static int width=1920, height=1080;
     private int screenSizeFraction = 2;
 
     private String title = "SusOp";
 
-    private Container currentScreen = null;
 
+    private static Window instance = null;
 
     public Window()
     {
+        if(instance == null)
+            instance = this;
+
         //Creation
         frame = new JFrame(title);
 
@@ -40,8 +46,7 @@ public class Window
         frame.setLayout(new BorderLayout());
         frame.getContentPane().setBackground(Style.backgroundColor);
 
-
-        SideBar sideBar = new SideBar();
+        sideBar = new SideBar();
         frame.add(sideBar, BorderLayout.LINE_START);
 
         //Now show it to the world
@@ -71,5 +76,11 @@ public class Window
         currentScreen = content;
         frame.add(content, BorderLayout.CENTER);
         frame.pack();
+    }
+
+    public static Window getInstance()
+    {
+        if(instance == null) new Window();
+        return instance;
     }
 }

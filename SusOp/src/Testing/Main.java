@@ -38,12 +38,23 @@ public class Main {
         }
         */
 
+        JPanel homeScreen = new JPanel();
+        homeScreen.setBackground(Style.backgroundColor);
+        homeScreen.add(new JLabel("Home Screen"));
 
-        JPanel screen = new JPanel();
-        screen.add(list, BorderLayout.LINE_START);
-        screen.setBackground(Style.backgroundColor);
+        JPanel settingsScreen = new JPanel();
+        settingsScreen.setBackground(Style.backgroundColor);
+        settingsScreen.add(new JLabel("Settings Screen"));
 
-        window.setScreen(screen);
+        JPanel listScreen = new JPanel();
+        listScreen.add(list, BorderLayout.LINE_START);
+        listScreen.setBackground(Style.backgroundColor);
+        
+        window.sideBar.homeScreen = homeScreen;
+        window.sideBar.settingsScreen = settingsScreen;
+        window.sideBar.listScreen = listScreen;
+
+        window.setScreen(listScreen);
 
         List<Device> devices = new LinkedList<Device>();
         NetworkPing.getAllDevices();

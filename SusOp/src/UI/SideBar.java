@@ -5,9 +5,13 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SideBar extends JPanel
 {
+    public JPanel homeScreen, listScreen, settingsScreen;
+
     public SideBar()
     {
         setBackground(Style.midgroundColor);
@@ -46,15 +50,15 @@ public class SideBar extends JPanel
 
         JButton homeButton = new JButton();
         JButton listButton = new JButton();
-        JButton graphButton = new JButton();
+        JButton settingsButton = new JButton();
 
         homeButton.setBackground(Style.midgroundColor);
         listButton.setBackground(Style.midgroundColor);
-        graphButton.setBackground(Style.midgroundColor);
+        settingsButton.setBackground(Style.midgroundColor);
 
         homeButton.setOpaque(false);
         listButton.setOpaque(false);
-        graphButton.setOpaque(false);
+        settingsButton.setOpaque(false);
         /*
         homeButton.setForeground(Style.backgroundColor);
         listButton.setForeground(Style.backgroundColor);
@@ -64,15 +68,15 @@ public class SideBar extends JPanel
 
         homeButton.setBorder(null);
         listButton.setBorder(null);
-        graphButton.setBorder(null);
+        settingsButton.setBorder(null);
 
         homeButton.setBorderPainted(false);
         listButton.setBorderPainted(false);
-        graphButton.setBorderPainted(false);
+        settingsButton.setBorderPainted(false);
 
         ImageIcon homeIcon = ImageLoader.loadImage("home.png");
         ImageIcon listIcon = ImageLoader.loadImage("list.png");
-        ImageIcon graphIcon = ImageLoader.loadImage("bar-graph.png");
+        ImageIcon settingsIcon = ImageLoader.loadImage("gear.png");
 
         if(homeIcon != null)
         {
@@ -84,10 +88,10 @@ public class SideBar extends JPanel
             listIcon = ImageLoader.resizeIcon(listIcon, 32, 32);
             listButton.setIcon(listIcon);
         }
-        if(graphIcon != null)
+        if(settingsIcon != null)
         {
-            graphIcon = ImageLoader.resizeIcon(graphIcon, 32, 32);
-            graphButton.setIcon(graphIcon);
+            settingsIcon = ImageLoader.resizeIcon(settingsIcon, 32, 32);
+            settingsButton.setIcon(settingsIcon);
         }
 
 
@@ -97,12 +101,39 @@ public class SideBar extends JPanel
 
         homeButton.setBorder(margin);
         listButton.setBorder(margin);
-        graphButton.setBorder(margin);
+        settingsButton.setBorder(margin);
 
         homeButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
         listButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
-        graphButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        settingsButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
 
+
+        homeButton.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        Window.getInstance().setScreen(homeScreen);
+                    }
+                }
+        );
+
+        listButton.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        Window.getInstance().setScreen(listScreen);
+                    }
+                }
+        );
+
+        settingsButton.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        Window.getInstance().setScreen(settingsScreen);
+                    }
+                }
+        );
 
         add(emptySpace1);
         add(homeButton);
@@ -111,6 +142,6 @@ public class SideBar extends JPanel
         add(listButton);
 
         add(emptySpace3);
-        add(graphButton);
+        add(settingsButton);
     }
 }
