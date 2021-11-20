@@ -2,6 +2,8 @@ package Testing;
 
 import Data.Device;
 import Data.DeviceType;
+import Networking.NetworkDevices;
+import Networking.NetworkPing;
 import UI.ListRenderer;
 import UI.Style;
 import UI.Window;
@@ -11,6 +13,8 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 public class Main
@@ -43,35 +47,37 @@ public class Main
 
         window.setScreen(screen);
 
+        List<Device> devices = new LinkedList<Device>();
+        NetworkPing.getAllDevices();
 
-
-
-        //Test code to add real devices
-        InetAddress localhost = InetAddress.getLocalHost();
-        byte[] ip = localhost.getAddress();
-
-        for (int i = 0; i <= 254; i++)
+        new Thread(new Runnable()
         {
-            final int m = i;
-            new Thread(new Runnable()
+            public void run()
             {
-                public void run() {
-                    ip[3] = (byte) m;
-                    try
+                while (true)
+                {
+                    List<Device> currentDevices = NetworkDevices.getInstance().getDevices();
+
+                    for (Device d : currentDevices)
                     {
-                        InetAddress address = InetAddress.getByAddress(ip);
-                        if (address.isReachable(1000))
+                        if (!devices.contains(d))
                         {
-                            Device device = new Device(" Test Name", DeviceType.DESKTOP, address);
-                            list.addElement(device);
+                            devices.add(d);
+
+                            list.addElement(d);
                         }
                     }
-                    catch(Exception e)
+
+                    try
                     {
-                        System.out.println(e.toString());
+                        this.wait((long) 5000);
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println("Crashed Ping Loop");
                     }
                 }
-            }).start();
-        }
+            }
+        }).start();
     }
 }

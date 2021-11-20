@@ -15,6 +15,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
     JLabel name;
     JLabel ip;
 
+    /*
     Dimension minFiller = new Dimension(0, 0);
     Dimension prefFiller = new Dimension(32, 32);
     Dimension maxFiller = new Dimension(64, 64);
@@ -22,6 +23,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
     Box.Filler emptySpace1 = new Box.Filler(minFiller, prefFiller,maxFiller);
     Box.Filler emptySpace2 = new Box.Filler(minFiller, prefFiller,maxFiller);
     Box.Filler emptySpace3 = new Box.Filler(minFiller, prefFiller,maxFiller);
+    */
 
     public DeviceRenderer()
     {
@@ -50,16 +52,13 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
         setMinimumSize(new Dimension(Window.width/10, 64));
         setPreferredSize(new Dimension(Window.width/2, 72));
 
-        BoxLayout layout = new BoxLayout(this, BoxLayout.LINE_AXIS);
-        setLayout(layout);
-
+        //BoxLayout layout = new BoxLayout(this, BoxLayout.LINE_AXIS);
+        //setLayout(layout);
+        setLayout(new GridLayout(1, 3));
 
         String iconPath = "question.png";
         switch (value.type)
         {
-            case MOBILE:
-                iconPath = "smartphone.png";
-                break;
             case DESKTOP:
                 iconPath = "desktop-pc.png";
                 break;
@@ -79,7 +78,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
                 iconPath = "bulb.png";
                 break;
             case OTHER:
-                iconPath = "desktop-pc.png";
+                iconPath = "question.png";
                 break;
             default:
                 iconPath = "question.png";
@@ -96,7 +95,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
             iconWrapper.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
             add(iconWrapper);
 
-            add(emptySpace1);
+            //add(emptySpace1);
         }
 
         if(name == null)
@@ -104,7 +103,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
             name = new JLabel("");
             add(name);
 
-            add(emptySpace2);
+            //add(emptySpace2);
         }
 
         if(ip == null)

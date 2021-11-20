@@ -35,7 +35,8 @@ public class ListRenderer extends JPanel
 
         setSize(new Dimension(Window.width/5, Window.height));
         setMinimumSize(new Dimension(Window.width/4, Window.height/5));
-        setPreferredSize(new Dimension(Window.width/2, Window.height));
+        setMaximumSize(new Dimension(Window.width, Window.height));
+        setPreferredSize(new Dimension(Window.width/3*2, Window.height));
 
         //Title
 
