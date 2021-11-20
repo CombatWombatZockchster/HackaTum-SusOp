@@ -78,6 +78,13 @@ public class NetworkPing
                                 name = "Unkown Device";
                                 type = "OTHER";
                             }
+
+                            //remove possible ".fritz.box" from name, cause sometimes is just gets added
+                            String unwantedSuffix = ".fritz.box";//Note the leading dot
+                            int suffixIndex = name.lastIndexOf(unwantedSuffix);
+                            if(suffixIndex > 0)
+                                name = name.substring(0, suffixIndex);
+
                             Device d = new Device(name, Device.findDeviceType(type), address.getHostAddress(), address);
                             NetworkDevices.getInstance().addDevice(d);
                             //Mac doesnt work outside of our Broadcast
