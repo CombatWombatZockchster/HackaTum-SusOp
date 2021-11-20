@@ -4,6 +4,7 @@ package Networking;
 //https://itqna.net/questions/708/how-get-list-devices-connected-network
 
 import Data.Device;
+import Data.DeviceKeyWord;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -85,7 +86,7 @@ public class NetworkPing
                             if(suffixIndex > 0)
                                 name = name.substring(0, suffixIndex);
 
-                            Device d = new Device(name, Device.findDeviceType(type), address.getHostAddress(), address);
+                            Device d = new Device(name, DeviceKeyWord.findDeviceType(type), address.getHostAddress(), address);
                             NetworkDevices.getInstance().addDevice(d);
                             //Mac doesnt work outside of our Broadcast
                             //NetworkInterface ni = NetworkInterface.getByInetAddress(address);
