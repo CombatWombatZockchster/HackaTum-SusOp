@@ -197,5 +197,12 @@ public class ListRenderer extends JPanel
     public void removeElement(Device device)
     {
         listModel.removeElement(device);
+
+        //FIXME: list size needs to look somewhat sensible
+        deviceJList.setPreferredSize(null);
+        scrollP.setPreferredSize(null);
+        setPreferredSize(null);
+
+        setMinimumSize(new Dimension(16, Window.height));
     }
 }
