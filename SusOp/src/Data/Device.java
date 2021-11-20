@@ -17,10 +17,12 @@ public class Device
 
     private Instant start, end;
 
-    //short powerUsage
+    //This is in wattHours
+    private double wattage;
 
-    //mac address (maybe hashed)
-    //etc.
+    //https://www.umweltbundesamt.de/themen/klima-energie/energieversorgung/strom-waermeversorgung-in-zahlen?sprungmarke=Strommix#Strommix
+    // Germany 2020 - 366 Grams per Watt hour
+    private static int co2PerWattHour = 366;
 
     public Device(String name, DeviceType type, String address, InetAddress inetAddress)
     {
@@ -30,8 +32,6 @@ public class Device
         this.inetAddress = inetAddress;
         this.start = Instant.now();
         this.end = end;
-<<<<<<< Updated upstream
-=======
 
         switch(this.type){
             //https://qr.ae/pGm5QF
@@ -58,9 +58,9 @@ public class Device
         return wattage * ((double) seconds / 3600);
     }
 
+
     public static double getCO2(double wattHour){
         return(wattHour * co2PerWattHour);
->>>>>>> Stashed changes
     }
 
     public Instant getEnd(){
@@ -101,10 +101,8 @@ public class Device
         return "Name: " + this.name + " Type: " + this.type + " Address: " + this.address;
     }
 
-<<<<<<< Updated upstream
-=======
     public double getWattage() {
         return this.wattage;
     }
->>>>>>> Stashed changes
+
 }

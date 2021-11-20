@@ -14,52 +14,6 @@ import java.util.concurrent.TimeUnit;
 
 public class NetworkPing
 {
-    public static void main(String[] args) throws IOException
-    {
-        for(Device d: NetworkDevices.getInstance().getDevices()){
-            System.out.println(d.toString());
-        }
-        try{
-            getAllDevices();
-        }catch(Exception e){
-            System.out.println(e.toString());
-        }
-
-        try {
-            TimeUnit.SECONDS.sleep(20);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("----");
-
-        for(Device d: NetworkDevices.getInstance().getDevices()){
-            System.out.println(d.toString());
-        }
-        try{
-            getAllDevices();
-        }catch(Exception e){
-            System.out.println(e.toString());
-        }
-
-        try {
-            TimeUnit.SECONDS.sleep(41);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("----");
-
-        for(Device d: NetworkDevices.getInstance().getDevices()){
-            System.out.println(d.toString());
-        }
-        try{
-            getAllDevices();
-        }catch(Exception e){
-            System.out.println(e.toString());
-        }
-    }
-
     public static void getAllDevices() throws UnknownHostException {
         InetAddress localhost = InetAddress.getLocalHost();
         byte[] ip = localhost.getAddress();

@@ -28,6 +28,12 @@ public class ListRenderer extends JPanel
         //setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setLayout(new BorderLayout());
 
+        Box.Filler emptySpaceLeft = new Box.Filler(new Dimension(8,8), new Dimension(16,16), new Dimension(32,32));
+        Box.Filler emptySpaceRight = new Box.Filler(new Dimension(8,8), new Dimension(16,16), new Dimension(32,32));
+        add(emptySpaceLeft, BorderLayout.LINE_START);
+        add(emptySpaceRight, BorderLayout.LINE_END);
+
+
         setBackground(Style.backgroundColor);
         setBorder(null);
         setOpaque(true);
