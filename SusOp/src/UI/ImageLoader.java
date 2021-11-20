@@ -8,20 +8,20 @@ import java.util.Optional;
 public class ImageLoader
 {
     //Load images from resource folder
-    public static Optional<ImageIcon> loadImage(String path)
+    public static ImageIcon loadImage(String path)
     {
         try
         {
             URL url = Window.class.getClassLoader().getResource(path);
             ImageIcon image = new ImageIcon(url);
 
-            return Optional.of(image);
+            return image;
         }
         catch (Exception e)
         {
-            System.out.println("Couldnt read icon " + path + " from resources. Caused error: " + e);
+            System.out.println("Couldnt read icon " + path + " from resources. Caused error:\n " + e);
 
-            return Optional.empty();
+            return null;
         }
     }
 

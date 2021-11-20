@@ -58,7 +58,7 @@ public class Window
 
     public void setIcon(String path)
     {
-        ImageIcon icon = ImageLoader.loadImage(path).get();
+        ImageIcon icon = ImageLoader.loadImage(path);
         if(icon != null)
             frame.setIconImage(icon.getImage());
     }

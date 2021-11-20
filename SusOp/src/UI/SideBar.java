@@ -27,7 +27,7 @@ public class SideBar extends JPanel
 
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
-        ImageIcon mainIcon = ImageLoader.loadImage("logoClear.png").get();
+        ImageIcon mainIcon = ImageLoader.loadImage("logoClear.png");
         if(mainIcon != null)
         {
             //Rescale
@@ -70,9 +70,9 @@ public class SideBar extends JPanel
         listButton.setBorderPainted(false);
         graphButton.setBorderPainted(false);
 
-        ImageIcon homeIcon = ImageLoader.loadImage("home.png").get();
-        ImageIcon listIcon = ImageLoader.loadImage("list.png").get();
-        ImageIcon graphIcon = ImageLoader.loadImage("bar-graph.png").get();
+        ImageIcon homeIcon = ImageLoader.loadImage("home.png");
+        ImageIcon listIcon = ImageLoader.loadImage("list.png");
+        ImageIcon graphIcon = ImageLoader.loadImage("bar-graph.png");
 
         if(homeIcon != null)
         {

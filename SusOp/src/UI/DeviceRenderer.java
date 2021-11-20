@@ -85,7 +85,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
                 break;
         }
 
-        ImageIcon icon = ImageLoader.loadImage(iconPath).get();
+        ImageIcon icon = ImageLoader.loadImage(iconPath);
         icon = ImageLoader.resizeIcon(icon, 32, 32);
 
 
