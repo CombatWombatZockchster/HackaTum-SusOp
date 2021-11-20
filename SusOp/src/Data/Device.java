@@ -15,7 +15,13 @@ public class Device
 
     public String address;
 
-    private static String[] phones = new String[]{"HUAWEI", "SAMSUNG", "IPHONE", "APPLE", "PIXEL"};
+    private static String[] phones = new String[]{"HUAWEI", "SAMSUNG", "IPHONE","APPLE", "PIXEL", "XIAOMI", "REDMI", "Android", "GAlAXY"};
+    private static String[] mobile = new String[]{"iPad", "tablet", "kindle"};
+    private static String[] routers = new String[]{"fritzbox", "fritz.box", "Fritz!Box", "Telekom"};
+    private static String[] desktop = new String[]{"DESKTOP", "PC", "ubuntu", "mac"};
+    private static String[] laptop = new String[]{"LAPTOP", "notebook", "ultrabook", "macbook"};
+    private static String[] printer = new String[]{"printer", "Inkjet", "Canon", "copy"};
+    private static String[] bulbs = new String[]{"lamp", "bulb", "hue"};
 
     private Instant start, end;
 
