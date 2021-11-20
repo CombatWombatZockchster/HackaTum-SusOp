@@ -19,9 +19,14 @@ public class ImageLoader
         }
         catch (Exception e)
         {
-            System.out.println("Coudlnt read icon " + path + " from resources. Caused error: " + e);
+            System.out.println("Couldnt read icon " + path + " from resources. Caused error: " + e);
 
             return Optional.empty();
         }
+    }
+
+    public static ImageIcon resizeIcon(ImageIcon icon, int width, int height)
+    {
+        return new ImageIcon(icon.getImage().getScaledInstance(width,height, Image.SCALE_SMOOTH));
     }
 }

@@ -11,6 +11,18 @@ import java.awt.*;
 //https://www.codejava.net/java-se/swing/jlist-custom-renderer-example
 public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
 {
+    JLabel iconWrapper;
+    JLabel name;
+    JLabel ip;
+
+    Dimension minFiller = new Dimension(0, 0);
+    Dimension prefFiller = new Dimension(32, 32);
+    Dimension maxFiller = new Dimension(64, 64);
+
+    Box.Filler emptySpace1 = new Box.Filler(minFiller, prefFiller,maxFiller);
+    Box.Filler emptySpace2 = new Box.Filler(minFiller, prefFiller,maxFiller);
+    Box.Filler emptySpace3 = new Box.Filler(minFiller, prefFiller,maxFiller);
+
     public DeviceRenderer()
     {
         setOpaque(true);
@@ -19,11 +31,29 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
         Border offset = new EmptyBorder(16, 16, 16, 16);
         CompoundBorder margin = new CompoundBorder(border, offset);
         setBorder(margin);
+
+        /*
+        JLabel iconWrapper = new JLabel("");
+        add(iconWrapper);
+
+        JLabel name = new JLabel("");
+        add(name);
+
+        JLabel ip = new JLabel("");
+        add(ip);
+        */
     }
 
     @Override
     public Component getListCellRendererComponent(JList<? extends Device> list, Device value, int index, boolean isSelected, boolean cellHasFocus)
     {
+        setMinimumSize(new Dimension(Window.width/10, 64));
+        setPreferredSize(new Dimension(Window.width/2, 72));
+
+        BoxLayout layout = new BoxLayout(this, BoxLayout.LINE_AXIS);
+        setLayout(layout);
+
+
         String iconPath = "question.png";
         switch (value.type)
         {
@@ -33,30 +63,79 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
             case DESKTOP:
                 iconPath = "desktop-pc.png";
                 break;
+            case PHONE:
+                iconPath = "smartphone.png";
+                break;
+            case LAPTOP:
+                iconPath = "laptop.png";
+                break;
+            case ROUTER:
+                iconPath = "wlan-router.png";
+                break;
+            case PRINTER:
+                iconPath = "printing.png";
+                break;
+            case LIGHTBULB:
+                iconPath = "bulb.png";
+                break;
+            case OTHER:
+                iconPath = "desktop-pc.png";
+                break;
             default:
                 iconPath = "question.png";
                 break;
         }
 
         ImageIcon icon = ImageLoader.loadImage(iconPath).get();
-        icon = new ImageIcon(icon.getImage().getScaledInstance(64,64, Image.SCALE_SMOOTH));
+        icon = ImageLoader.resizeIcon(icon, 32, 32);
 
-        if(icon != null)
-            setIcon(icon);
-        else
-            System.out.println("Couldnt load Icon desktop-pc.png");
 
-        setText(value.name);
+        if(iconWrapper == null)
+        {
+            iconWrapper = new JLabel("");
+            iconWrapper.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
+            add(iconWrapper);
+
+            add(emptySpace1);
+        }
+
+        if(name == null)
+        {
+            name = new JLabel("");
+            add(name);
+
+            add(emptySpace2);
+        }
+
+        if(ip == null)
+        {
+            ip = new JLabel("");
+            add(ip);
+        }
+
+
+        iconWrapper.setIcon(icon);
+
+        name.setText(value.name);
+
+        ip.setText(value.address.toString());
+
 
         if(!isSelected && !cellHasFocus)
         {
             setBackground(Style.midgroundColor);
-            setForeground(Style.textColor);
+            //setForeground(Style.textColor);
+
+            ip.setForeground(Style.textColor);
+            name.setForeground(Style.textColor);
         }
         else if(isSelected)
         {
-            setBackground(Style.accentColor);
-            setForeground(Style.highLightColor);
+            setBackground(Style.highLightColor);
+            //setForeground(Style.backgroundColor);
+
+            ip.setForeground(Style.backgroundColor);
+            name.setForeground(Style.backgroundColor);
         }
         /*
         else if(cellHasFocus)
