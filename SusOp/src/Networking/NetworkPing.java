@@ -78,7 +78,7 @@ public class NetworkPing
                                 name = "Unkown Device";
                                 type = "OTHER";
                             }
-                            Device d = new Device(name, Device.findDeviceType(type), address);
+                            Device d = new Device(name, Device.findDeviceType(type), address.getHostAddress(), address);
                             NetworkDevices.getInstance().addDevice(d);
                             //Mac doesnt work outside of our Broadcast
                             //NetworkInterface ni = NetworkInterface.getByInetAddress(address);
