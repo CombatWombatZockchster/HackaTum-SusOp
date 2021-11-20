@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Random;
 
 import java.net.InetAddress;
@@ -288,7 +289,7 @@ public class HomeScreen extends JPanel
             graphData.put(i, i % 10 + random.nextInt(10));
         }
         */
-        HashMap<Integer, Integer> graphData = NetworkDevices.getInstance().getGraphData();
+        LinkedHashMap<Integer, Integer> graphData = NetworkDevices.getInstance().getGraphData();
         graphData.put(0, 0);
         lineGraph.setData(graphData);
 
@@ -307,7 +308,7 @@ public class HomeScreen extends JPanel
         this.avgCo2.setText("" + avgCO2 + " g");
         this.totalCo2.setText("" + totalCO2 + " g");
 
-        HashMap<Integer, Integer> graphData = NetworkDevices.getInstance().getGraphData();
+        LinkedHashMap<Integer, Integer> graphData = NetworkDevices.getInstance().getGraphData();
         graphData.put(0, 0);
         lineGraph.setData(graphData);
     }

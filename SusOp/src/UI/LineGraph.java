@@ -10,14 +10,14 @@ import static java.util.Comparator.*;
 //https://stackoverflow.com/questions/8693342/drawing-a-simple-line-graph-in-java
 public class LineGraph extends JPanel
 {
-    private HashMap<Integer, Integer> data = new HashMap<Integer, Integer>();
+    private LinkedHashMap<Integer, Integer> data = new LinkedHashMap<Integer, Integer>();
 
     public LineGraph()
     {
         setBackground(Style.midgroundColor);
     }
 
-    public void setData(HashMap data)
+    public void setData(LinkedHashMap data)
     {
         this.data = data;
     }

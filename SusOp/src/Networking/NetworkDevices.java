@@ -7,6 +7,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class NetworkDevices {
 
@@ -14,12 +15,12 @@ public class NetworkDevices {
 
     private ArrayList<Device> devices;
 
-    private HashMap<Integer, Integer> graphData;
+    private LinkedHashMap<Integer, Integer> graphData;
     private Instant startUp;
 
     public NetworkDevices(){
         this.devices = new ArrayList<Device>();
-        this.graphData = new HashMap<Integer, Integer>();
+        this.graphData = new LinkedHashMap<Integer, Integer>();
         startUp = Instant.now();
     }
 
@@ -102,7 +103,7 @@ public class NetworkDevices {
         this.graphData.put((int) Duration.between(startUp, Instant.now()).toSeconds(), this.devices.size());
     }
 
-    public HashMap<Integer, Integer> getGraphData(){
+    public LinkedHashMap<Integer, Integer> getGraphData(){
         return this.graphData;
     }
 
