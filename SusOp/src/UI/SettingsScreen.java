@@ -33,9 +33,14 @@ public class SettingsScreen extends JPanel
         add(titleLabel, BorderLayout.PAGE_START);
 
 
+        Box.Filler emptySpaceLeft = new Box.Filler(new Dimension(8,8), new Dimension(16,16), new Dimension(32,32));
+        Box.Filler emptySpaceRight = new Box.Filler(new Dimension(8,8), new Dimension(16,16), new Dimension(32,32));
+        add(emptySpaceLeft, BorderLayout.LINE_START);
+        add(emptySpaceRight, BorderLayout.LINE_END);
+
         //Debug Values
         JPanel selection = new JPanel();
-        selection.setBackground(Style.backgroundColor);
+        selection.setBackground(Style.midgroundColor);
 
         JLabel sourceTitle = new JLabel("Power Source:");
         sourceTitle.setBackground(Style.accentColor);

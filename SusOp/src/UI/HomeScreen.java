@@ -16,6 +16,7 @@ public class HomeScreen extends JPanel
         setBackground(Style.backgroundColor);
 
 
+        //Title
         titleLabel = new JLabel();
 
         titleLabel.setText("Your Device");
@@ -32,6 +33,15 @@ public class HomeScreen extends JPanel
 
         add(titleLabel, BorderLayout.PAGE_START);
 
+        //Margins
+        Box.Filler emptySpaceLeft = new Box.Filler(new Dimension(8,8), new Dimension(16,16), new Dimension(32,32));
+        Box.Filler emptySpaceRight = new Box.Filler(new Dimension(8,8), new Dimension(16,16), new Dimension(32,32));
+        add(emptySpaceLeft, BorderLayout.LINE_START);
+        add(emptySpaceRight, BorderLayout.LINE_END);
 
+        JPanel center = new JPanel();
+        center.setBackground(Style.midgroundColor);
+
+        add(center, BorderLayout.CENTER);
     }
 }
