@@ -31,7 +31,7 @@ public class LineGraph extends JPanel
         int min = data.values().stream().min(Comparator.<Integer>naturalOrder()).get();
         int max = data.values().stream().max(Comparator.<Integer>naturalOrder()).get();
 
-        double xMul = (double) getWidth() / (double) data.size();
+        double xMul = (double) getWidth() / (double) data.keySet().stream().max(Comparator.<Integer>naturalOrder()).get();
         double yMul = (double) getHeight() / (double) Math.abs(min - max);
 
 
