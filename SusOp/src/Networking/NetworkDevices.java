@@ -23,18 +23,70 @@ public class NetworkDevices {
 
     public void addDevice(Device d){
         if(!containsAddress(this.devices, d.address.toString())){
-            System.out.println("Added Device: " + d.toString());
+            //System.out.println("Added Device: " + d.toString());
             this.devices.add(d);
         } else {
-            System.out.println("Already got " + d.toString());
+            //System.out.println("Already got " + d.toString());
             this.devices.get(getIndexByAddress(this.devices, d.address.toString())).refreshTime();
             //System.out.println(Device.upTimeToString(this.devices.get(getIndexByAddress(this.devices, d.address.toString())).getUpTime()));
         }
     }
 
-    public void removeOldDevices(){
+    //summe und durchschnitt von Wattage Watthour und Co2
+
+    public double getSumOfWatt(){
+        double sum = 0;
         for(Device d: this.devices){
-            if(Duration.between( d.getEnd(),Instant.now()).compareTo(Duration.ofMinutes(1)) > 0) {
+            sum += d.getWattage();
+        }
+        return sum;
+    }
+
+    public double getSumOfWattHour(){
+        double sum = 0;
+        for(Device d: this.devices){
+            sum += Device.getWattHour(d.getWattage(), d.getLifeTime());
+        }
+        return sum;
+    }
+
+    public double getSumOfCo2(){
+        double sum = 0;
+        for(Device d: this.devices){
+            sum += Device.getCO2(Device.getWattHour(d.getWattage(), d.getLifeTime()));
+        }
+        return sum;
+    }
+
+    public double getAvgOfWatt(){
+        double sum = 0;
+        for(Device d: this.devices){
+            sum += d.getWattage();
+        }
+        return sum / devices.size();
+    }
+
+    public double getAvgOfWattHour(){
+        double sum = 0;
+        for(Device d: this.devices){
+            sum += Device.getWattHour(d.getWattage(), d.getLifeTime());
+        }
+        return sum / devices.size();
+    }
+
+    public double getAvgOfCo2(){
+        double sum = 0;
+        for(Device d: this.devices){
+            sum += Device.getCO2(Device.getWattHour(d.getWattage(), d.getLifeTime()));
+        }
+        return sum / devices.size();
+    }
+
+
+    public void removeOldDevices(){
+        for(int d = 0; d < devices.size(); d++){
+            if(Duration.between(devices.get(d).getEnd().plus(Duration.ofSeconds(1)), Instant.now()).compareTo(Duration.ofMinutes(1)) > 0) {
+                System.out.println(devices.get(d).toString());
                 devices.remove(d);
             }
         }

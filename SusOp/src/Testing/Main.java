@@ -1,20 +1,14 @@
 package Testing;
 
 import Data.Device;
-import Data.DeviceType;
-import Networking.NetworkDevices;
 import Networking.NetworkPing;
 import UI.*;
 import UI.Window;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -37,7 +31,7 @@ public class Main {
         }
         */
 
-        JPanel homeScreen = new HomeScreen();
+        HomeScreen homeScreen = new HomeScreen();
 
         JPanel settingsScreen = new SettingsScreen();
 
@@ -54,6 +48,7 @@ public class Main {
         List<Device> devices = new LinkedList<Device>();
         NetworkPing.getAllDevices();
 
-        new Loop(devices, list).start();
+        new UILoop(devices, list, homeScreen).start();
+        new UtilityLoop().start();
     }
 }

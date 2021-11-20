@@ -18,7 +18,7 @@ public class NetworkPing
         InetAddress localhost = InetAddress.getLocalHost();
         byte[] ip = localhost.getAddress();
 
-        for (int i = 0; i <= 254; i++) {
+        for (int i = 1; i <= 254; i++) {
             final int m = i;
             new Thread(new Runnable() {
                 public void run() {
