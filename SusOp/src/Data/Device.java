@@ -15,14 +15,6 @@ public class Device
 
     public String address;
 
-    private static String[] phones = new String[]{"HUAWEI", "SAMSUNG", "IPHONE","APPLE", "PIXEL", "XIAOMI", "REDMI", "Android", "GAlAXY"};
-    private static String[] mobile = new String[]{"iPad", "tablet", "kindle"};
-    private static String[] routers = new String[]{"fritzbox", "fritz.box", "Fritz!Box", "Telekom"};
-    private static String[] desktop = new String[]{"DESKTOP", "PC", "ubuntu", "mac"};
-    private static String[] laptop = new String[]{"LAPTOP", "notebook", "ultrabook", "macbook"};
-    private static String[] printer = new String[]{"printer", "Inkjet", "Canon", "copy"};
-    private static String[] bulbs = new String[]{"lamp", "bulb", "hue"};
-
     private Instant start, end;
 
     //short powerUsage
@@ -37,11 +29,11 @@ public class Device
         this.address = address;
         this.inetAddress = inetAddress;
         this.start = Instant.now();
-        this.end = Instant.now();
+        this.end = end;
     }
 
     public Instant getEnd(){
-        return this.end;
+        return end;
     }
 
     public void refreshTime(){
@@ -52,7 +44,10 @@ public class Device
         return Duration.between(start, end);
     }
 
-    public static String upTimeToString(Duration dur){
+    public String upTimeToString()
+    {
+        Duration dur = Duration.between(start, Instant.now());
+
         if(dur.toDays() != 0) {
             return dur.toDays() + " d";
         } else if(dur.toHours() != 0) {
@@ -70,19 +65,4 @@ public class Device
         return "Name: " + this.name + " Type: " + this.type + " Address: " + this.address;
     }
 
-    public static DeviceType findDeviceType(String info){
-        for (DeviceType t: DeviceType.values()) {
-            if(info.contains(t.name()) || info.contains(t.name().toLowerCase(Locale.ROOT))){
-                return t;
-            }
-        }
-
-        for(String t : phones){
-            if(info.contains(t)){
-                return DeviceType.PHONE;
-            }
-        }
-
-        return DeviceType.valueOf("OTHER");
-    }
 }

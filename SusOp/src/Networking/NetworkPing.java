@@ -4,6 +4,7 @@ package Networking;
 //https://itqna.net/questions/708/how-get-list-devices-connected-network
 
 import Data.Device;
+import Data.DeviceKeyWord;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -72,13 +73,24 @@ public class NetworkPing
                         InetAddress address = InetAddress.getByAddress(ip);
                         if (address.isReachable(1000)) {
                             String name = address.getHostName();
+
+                            //remove possible ".fritz.box" from name, cause sometimes is just gets added
+                            String unwantedSuffix = ".fritz.box";//Note the leading dot
+                            int suffixIndex = name.lastIndexOf(unwantedSuffix);
+                            if(suffixIndex > 0)
+                            {
+                                name = name.substring(0, suffixIndex);
+                            }
+
                             String type = name;
+
                             if(address.getHostAddress().contains(name)){
                                 //Device does not want to show its name <.<
                                 name = "Unkown Device";
                                 type = "OTHER";
                             }
-                            Device d = new Device(name, Device.findDeviceType(type), address.getHostAddress(), address);
+
+                            Device d = new Device(name, DeviceKeyWord.findDeviceType(type), address.getHostAddress(), address);
                             NetworkDevices.getInstance().addDevice(d);
                             //Mac doesnt work outside of our Broadcast
                             //NetworkInterface ni = NetworkInterface.getByInetAddress(address);

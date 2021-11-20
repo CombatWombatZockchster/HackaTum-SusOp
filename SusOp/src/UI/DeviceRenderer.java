@@ -14,6 +14,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
     JLabel iconWrapper;
     JLabel name;
     JLabel ip;
+    JLabel time;
 
     /*
     Dimension minFiller = new Dimension(0, 0);
@@ -54,7 +55,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
 
         //BoxLayout layout = new BoxLayout(this, BoxLayout.LINE_AXIS);
         //setLayout(layout);
-        setLayout(new GridLayout(1, 3));
+        setLayout(new GridLayout(1, 4));
 
         String iconPath = "question.png";
         switch (value.type)
@@ -112,12 +113,19 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
             add(ip);
         }
 
+        if(time == null)
+        {
+            time = new JLabel("");
+            add(time);
+        }
 
         iconWrapper.setIcon(icon);
 
         name.setText(value.name);
 
-        ip.setText(value.address.toString());
+        ip.setText(value.address);
+
+        time.setText(value.upTimeToString());
 
 
         if(!isSelected && !cellHasFocus)
@@ -127,6 +135,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
 
             ip.setForeground(Style.textColor);
             name.setForeground(Style.textColor);
+            time.setForeground(Style.textColor);
         }
         else if(isSelected)
         {
@@ -135,6 +144,7 @@ public class DeviceRenderer extends JLabel implements ListCellRenderer<Device>
 
             ip.setForeground(Style.backgroundColor);
             name.setForeground(Style.backgroundColor);
+            time.setForeground(Style.backgroundColor);
         }
         /*
         else if(cellHasFocus)

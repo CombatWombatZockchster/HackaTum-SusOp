@@ -114,6 +114,20 @@ public class ListRenderer extends JPanel
         setVisible(true);
     }
 
+    @Override
+    public void repaint()
+    {
+        super.repaint();
+
+        if(deviceJList != null)
+        {
+            deviceJList.repaint();
+            deviceJList.revalidate();
+        }
+       //if(scrollP != null) scrollP.repaint();
+       //if(titleLabel != null) titleLabel.repaint();
+    }
+
     public void addElement(Device device)
     {
         //devices.add(device);
