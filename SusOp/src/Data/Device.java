@@ -1,6 +1,8 @@
 package Data;
 
 import java.net.InetAddress;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Locale;
 
 public class Device
@@ -13,6 +15,8 @@ public class Device
 
     private static String[] phones = new String[]{"HUAWEI", "SAMSUNG", "IPHONE", "APPLE", "PIXEL"};
 
+    private Instant start, end;
+
     //short powerUsage
 
     //mac address (maybe hashed)
@@ -23,6 +27,28 @@ public class Device
         this.name = name;
         this.type = type;
         this.address = address;
+        this.start = Instant.now();
+        this.end = Instant.now();
+    }
+
+    public void refreshTime(){
+        this.end = Instant.now();
+    }
+
+    public Duration getUpTime(){
+        return Duration.between(start, end);
+    }
+
+    public static String upTimeToString(Duration dur){
+        if(dur.toDays() != 0) {
+            return dur.toDays() + " d";
+        } else if(dur.toHours() != 0) {
+            return dur.toHours() + " h";
+        } else if(dur.toMinutes() != 0) {
+            return dur.toMinutes() + " m";
+        } else {
+            return dur.toSeconds() + " s";
+        }
     }
 
     @Override
