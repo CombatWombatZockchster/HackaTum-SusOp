@@ -123,13 +123,26 @@ public class HomeScreen extends JPanel
         avgWattHour.setForeground(Style.textColor);
         totalWattHour.setForeground(Style.textColor);
 
-        Dimension cellSize = new Dimension(Window.width/16, Window.height/16);
+
+        Dimension cellSize = new Dimension(Window.width/2, Window.height/10);
         avgCo2.setPreferredSize(cellSize);
         totalCo2.setPreferredSize(cellSize);
         avgWatt.setPreferredSize(cellSize);
         totalWatt.setPreferredSize(cellSize);
         avgWattHour.setPreferredSize(cellSize);
         totalWattHour.setPreferredSize(cellSize);
+
+
+        center.setPreferredSize(new Dimension(Window.width/3*2, Window.height/4));
+
+        Dimension titleSize = new Dimension(Window.width/32, Window.height/32);
+
+        statLabel.setPreferredSize(titleSize);
+        avgLabel.setPreferredSize(titleSize);
+        totalLabel.setPreferredSize(titleSize);
+        co2Label.setPreferredSize(titleSize);
+        wattLabel.setPreferredSize(titleSize);
+        wattHourLabel.setPreferredSize(titleSize);
 
 
         statLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -180,7 +193,6 @@ public class HomeScreen extends JPanel
         JLabel systemSpecs = new JLabel("System");
         JLabel empty = new JLabel("");
 
-        empty.setForeground(Style.backgroundColor);
         systemSpecs.setForeground(Style.backgroundColor);
         systemSpecs.setBackground(Style.accentColor);
         empty.setBackground(Style.accentColor);
@@ -188,8 +200,8 @@ public class HomeScreen extends JPanel
         empty.setOpaque(true);
 
 
-        systemSpecs.setPreferredSize(cellSize);
-        empty.setPreferredSize(cellSize);
+        //systemSpecs.setPreferredSize(cellSize);
+        empty.setPreferredSize(titleSize);
         systemSpecs.setHorizontalAlignment(JLabel.CENTER);
         empty.setHorizontalAlignment(JLabel.CENTER);
 
@@ -199,6 +211,8 @@ public class HomeScreen extends JPanel
         JLabel empty2 = new JLabel("");
         empty2.setBackground(Style.accentColor);
         empty2.setOpaque(true);
+        empty2.setPreferredSize(titleSize);
+
         information.add(empty2);
 
         JLabel userName = new JLabel("User:");
@@ -211,7 +225,7 @@ public class HomeScreen extends JPanel
         userName.setOpaque(true);
         name.setOpaque(true);
 
-        userName.setPreferredSize(cellSize);
+        //userName.setPreferredSize(cellSize);
         name.setPreferredSize(cellSize);
         userName.setHorizontalAlignment(JLabel.CENTER);
         name.setHorizontalAlignment(JLabel.LEFT);
@@ -240,7 +254,7 @@ public class HomeScreen extends JPanel
         ipAddress.setOpaque(true);
         address.setOpaque(true);
 
-        ipAddress.setPreferredSize(cellSize);
+        //ipAddress.setPreferredSize(cellSize);
         address.setPreferredSize(cellSize);
         ipAddress.setHorizontalAlignment(JLabel.CENTER);
         address.setHorizontalAlignment(JLabel.CENTER);
@@ -255,6 +269,13 @@ public class HomeScreen extends JPanel
         information.add(address);
 
 
+        information.setPreferredSize(new Dimension(Window.width/3*2, Window.height/5));
+
+        systemSpecs.setPreferredSize(titleSize);
+        userName.setPreferredSize(titleSize);
+        ipAddress.setPreferredSize(titleSize);
+
+
 
         //Graph
 
@@ -263,6 +284,8 @@ public class HomeScreen extends JPanel
 
         JPanel graphWrapper = new JPanel();
         graphWrapper.setLayout(new BorderLayout());
+
+        graphWrapper.setPreferredSize(new Dimension(Window.width, Window.height/2));
 
         background.add(graphWrapper);
 
