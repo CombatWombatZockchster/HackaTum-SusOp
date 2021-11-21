@@ -103,7 +103,6 @@ public class ListRenderer extends JPanel
 
         header.add(typeHeader);
         header.add(nameHeader);
-        header.add(typeHeader);
         header.add(ipHeader);
         header.add(timeHeader);
         header.add(wattageHeader);
