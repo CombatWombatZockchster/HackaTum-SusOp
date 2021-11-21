@@ -23,6 +23,7 @@ public class UtilityLoop extends Thread
             //Refresh Devices Ping
             try {
                 NetworkPing.getAllDevices();
+                //NetworkPing.dummyDevices();
             } catch (UnknownHostException e) {
                 System.out.println("Unkown Host Exception " + e);
             }
@@ -35,7 +36,7 @@ public class UtilityLoop extends Thread
             {
                 System.out.println("Crashed Ping Loop");
             }
-            
+
             //Remove old Devices that have been inactive for 60 seconds at least from List
             this.instance.removeOldDevices();
             this.instance.addGraphDataPoint();

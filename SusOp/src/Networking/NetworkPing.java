@@ -60,4 +60,71 @@ public class NetworkPing
             }).start();
         }
     }
+
+    public static void dummyDevices(){
+        new Thread(new Runnable() {
+            public void run() {
+
+                try
+                {
+                    wait(3000);
+                }
+                catch (Exception e)
+                {
+                    System.out.println("Crashed Dummy Devices");
+                }
+
+                Device d = null;
+                try {
+                    d = new Device("HP-Printer7256", DeviceKeyWord.findDeviceType("HP-Printer7256"), "192.168.50.87", InetAddress.getByName("192.168.50.87"));
+                } catch (UnknownHostException e) {
+                    System.out.println("to be expected");
+                }
+                NetworkDevices.getInstance().addDevice(d);
+
+                try
+                {
+                    wait(2000);
+                }
+                catch (Exception e)
+                {
+                    System.out.println("Crashed Dummy Devices");
+                }
+
+                d = null;
+                try {
+                    d = new Device("HUAWEI-0239", DeviceKeyWord.findDeviceType("HUAWEI-023"), "192.168.50.66", InetAddress.getByName("192.168.50.66"));
+                } catch (UnknownHostException e) {
+                    System.out.println("to be expected");
+                }
+                NetworkDevices.getInstance().addDevice(d);
+
+                try
+                {
+                    wait(5000);
+                }
+                catch (Exception e)
+                {
+                    System.out.println("Crashed Dummy Devices");
+                }
+
+
+                d = null;
+                try {
+                    d = new Device("hue-phillips-1", DeviceKeyWord.findDeviceType("hue-phillips-1"), "192.168.50.73", InetAddress.getByName("192.168.50.73"));
+                } catch (UnknownHostException e) {
+                    System.out.println("to be expected");
+                }
+                NetworkDevices.getInstance().addDevice(d);
+
+                d = null;
+                try {
+                    d = new Device("hue-phillips-2", DeviceKeyWord.findDeviceType("hue-phillips-2"), "192.168.50.74", InetAddress.getByName("192.168.50.74"));
+                } catch (UnknownHostException e) {
+                    System.out.println("to be expected");
+                }
+                NetworkDevices.getInstance().addDevice(d);
+            }
+        }).start();
+    }
 }

@@ -9,7 +9,7 @@ public abstract class DeviceKeyWord
     public static String[] routers = new String[]{"fritzbox", "fritz.box", "Fritz!Box", "Telekom"};
     public static String[] desktop = new String[]{"DESKTOP", "PC", "ubuntu", "mac", "2008", "docker"};
     public static String[] laptop = new String[]{"LAPTOP", "notebook", "ultrabook", "macbook"};
-    public static String[] printer = new String[]{"printer", "Inkjet", "Canon", "copy", "SEC"};
+    public static String[] printer = new String[]{"printer", "Inkjet", "Canon", "copy", "SEC", "Printer"};
     public static String[] bulbs = new String[]{"lamp", "bulb", "hue", "ESP"};
 
     public static boolean checkForKeyWord(String name, String[] keywords)
